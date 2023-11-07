@@ -10,7 +10,7 @@
       <tr>
         <th scope="col">List</th>
         <th scope="col">First Name</th>
-        <th scope="col">Last Name</th>
+        <th scope="col">Last </th>
         <th scope="col">E-mail</th>
       </tr>
     </thead>
