@@ -20,7 +20,6 @@ return new class extends Migration
             $table->string('password',20)->unique();
             $table->string('address',20); 
             $table->string('city')->nullable();
-            $table->text('action',50);
             $table->timestamps();
         });
     }
