@@ -6,7 +6,7 @@
 @include('notify::components.notify')
 
     <body class="sb-nav-fixed">
-        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-primary">
             <!-- Navbar Brand-->
              <a class="navbar-brand ps-3" href="{{url('/')}}">Event Vibes</a>
             <!-- Sidebar Toggle-->
@@ -26,14 +26,14 @@
                         <li><a class="dropdown-item" href="#!">Settings</a></li>
                         <li><a class="dropdown-item" href="#!">Activity Log</a></li>
                         <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="{{route('admin.logout')}}">Logout</a></li>
+                        <li><a class="dropdown-item" href="{{route('admin.logout')}}">{{auth()->user()->name}}|Logout</a></li>
                     </ul>
                 </li>
             </ul>
         </nav>
         <div id="layoutSidenav">
             <div id="layoutSidenav_nav">
-                <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                <nav class="sb-sidenav accordion bg-light" id="sidenavAccordion">
                     @include('admin.partial.sidebar')
                    
                     </div>

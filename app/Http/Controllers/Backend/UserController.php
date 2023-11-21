@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use notify;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Validator;
@@ -14,7 +15,7 @@ class UserController extends Controller
     }
     public function loginPost(Request $request)
     {
-         //dd($request->all());
+        //  dd($request->all());
             $validate=Validator::make($request->all(),
             [
                'email'=>'required|email',
@@ -35,7 +36,7 @@ class UserController extends Controller
             $login=auth()->attempt($credentials);
             if($login)
             {
-               return redirect()->route('dashboard');
+               return redirect()->route('home');
             }
             notify()->success('Logged in sucessfully');
            return redirect()->back()->with('message', 'Invalid user email or password');
@@ -46,5 +47,52 @@ class UserController extends Controller
         auth()->logout();
          notify()->success('Logged out sucessfully');
         return redirect()->route('admin.login');    
+    }
+    
+    public function list(){
+        $users=User::all();
+        return view('admin.pages.user.list', compact('users'));
+    }
+    
+    public function createform(){
+        return view('admin.pages.user.form');
+    }
+
+    public function store(Request $request){
+        //dd($request->all());
+        $validate=Validator::make($request->all(),[
+            'user_name'=>'required',
+            'role'=>'required',
+            'user_email'=>'required|email',
+            'user_password'=>'required|min:6',
+        ]);
+
+        if($validate->fails())
+        {
+            return redirect()->back()->with('myError',$validate->getMessageBag());
+        }
+
+        $fileName=null;
+        if($request->hasFile('user_image'))
+        {
+            $file=$request->file('user_image');
+            $fileName=date('Ymdhis').'.'.$file->getClientOriginalExtension();
+           
+            $file->storeAs('/uploads',$fileName);
+
+        }
+
+       
+        User::create([
+            'name'=>$request->user_name,
+            'role'=>$request->role,
+            'image'=>$fileName,
+            'email'=>$request->user_email,
+            'password'=>bcrypt($request->user_password),
+        ]);
+
+        return redirect()->route('user.list')->with('message','User created successfully.');
+
+
     }
 }

@@ -1,19 +1,23 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\RoleController;
-use App\Http\Controllers\UsersController;
-use App\Http\Controllers\RatingController;
-use App\Http\Controllers\AboutUsController;
-use App\Http\Controllers\BookingController;
-use App\Http\Controllers\PackageController;
-use App\Http\Controllers\PaymentController;
-use App\Http\Controllers\CustomerController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\EventTypeController;
+use App\Http\Controllers\Backend\HomeController;
+use App\Http\Controllers\Backend\RoleController;
 use App\Http\Controllers\Backend\UserController;
-use App\Http\Controllers\ServiceCategoryController;
+use App\Http\Controllers\Backend\EventController;
+use App\Http\Controllers\Backend\RatingController;
+use App\Http\Controllers\Backend\AboutUsController;
+use App\Http\Controllers\Backend\BookingController;
+use App\Http\Controllers\Backend\PackageController;
+use App\Http\Controllers\Backend\PaymentController;
+use App\Http\Controllers\Backend\ServiceController;
+use App\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\Backend\CustomerController;
+use App\Http\Controllers\Frontend\CustomerController as FrontendCustomerController;
+use App\Http\Controllers\Frontend\HomeController as FrontendHomeController; 
+use App\Http\Controllers\Frontend\EventController as FrontendEventController;
+use App\Http\Controllers\Frontend\AboutUsController as FrontendAboutUs;
+use App\Http\Controllers\Frontend\MasterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,43 +30,82 @@ use App\Http\Controllers\ServiceCategoryController;
 |
 */
 
-Route::get('/admin/login', [UserController::class, 'loginForm'])->name('admin.login');
+Route::get('/',[FrontendHomeController::class,'home'])->name('frontendhome');
+Route::get('/master',[MasterController::class,'master'])->name('master');
+
+Route::get('/registration',[FrontendCustomerController::class,'registration'])->name('customer.registration');
+Route::post('/registration', [FrontendCustomerController::class,'registrationstore'])->name('customer.store');
+
+Route::get('/login',[FrontendCustomerController::class, 'login'])->name('login');
+Route::post('/login',[FrontendCustomerController::class,'dologin'])->name('customer.do.login');
+Route::get('/book-event', [FrontendEventController::class, 'bookEvent'])->name('event.book');
+
+Route::get('/frontendaboutus',[FrontendAboutUs::class,'aboutus'])->name('aboutus');
+
+Route::group(['middleware'=>'auth'],function(){
+    Route::get('/profile',[FrontendCustomerController::class,'profile'])->name('profile.view');
+    Route::get('/logout',[FrontendCustomerController::class, 'logout'])->name('customer.logout');
+});
+ 
+
+
+
+
+
+
+
+
+
+Route::group(['prefix'=>'admin'],function(){
+
+Route::get('/login', [UserController::class, 'loginForm'])->name('admin.login');
 Route::post('/login-form-post', [UserController::class, 'loginPost'])->name('admin.login.post');
 
 Route::group(['middleware'=>'auth'], function () {
+    Route::group(['middleware'=>'checkadmin'], function (){
 
-    Route::get('/', [HomeController::class, 'home'])->name('dashboard');
+    Route::get('/', [HomeController::class, 'home'])->name('home');
 
-    Route::get('/dashboard', [DashboardController::class, 'dashboard']);
+    Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
    
     Route::get('/admin/logout', [UserController::class, 'logout'])->name('admin.logout');
     
     Route::get('/role/list', [RoleController::class, 'role'])->name('role.list');
    
-    Route::get('/eventtype/list', [EventTypeController::class, 'list'])->name('eventtype.list');
-    Route::get('/eventtype/create', [EventTypeController::class, 'create'])->name('eventtype.create');
-    Route::post('/eventtype/store', [EventTypeController::class, 'store'])->name('eventtype.store');
+    Route::get('/event/list', [EventController::class, 'list'])->name('event.list');
+    Route::get('/event/form', [EventController::class, 'createform'])->name('event.form');
+    Route::post('/event/store', [EventController::class, 'store'])->name('event.store');
    
     Route::get('/customer/list', [CustomerController::class, 'list'])->name('customer.list');
     Route::get('/customer/form', [CustomerController::class, 'createform'])->name('customer.form');
     Route::post('/customer/store', [CustomerController::class, 'store'])->name('customer.store');
 
+    Route::get('/user/list',[UserController::class,'list'])->name('user.list');
+    Route::get('/user/form',[UserController::class,'createform'])->name('user.form');
+    Route::post('/user/store',[UserController::class,'store'])->name('user.store');
+
     
-    Route::get('/servicecategory/list', [ServiceCategoryController::class, 'list'])->name('servicecatategory.list');
-    Route::get('/servicecategory/form', [ServiceCategoryController::class, 'form'])->name('servicecategory.form');
-    Route::post('/servicecategory/store', [ServiceCategoryController::class, 'store'])->name('servicecategory.store');
+    Route::get('/service/list', [ServiceController::class, 'list'])->name('service.list');
+    Route::get('/service/form', [ServiceController::class, 'form'])->name('service.form');
+    Route::post('/service/store', [ServiceController::class, 'store'])->name('service.store');
+    Route::get('/service/delete/{id}',[ServiceController::class,'delete'])->name('service.delete');
+    Route::get('/service/edit/{id}',[ServiceController::class,'edit'])->name('service.edit');
+    Route::put('/service/update/{id}',[ServiceController::class,'update'])->name('service.update');
     
     Route::get('/package/list', [PackageController::class, 'list'])->name('package.list');
+    Route::get('/package/form',[PackageController::class,'createform'])->name('package.form');
+    Route::post('/package/store',[PackageController::class,'store'])->name('package.store');
     
     Route::get('/booking/list', [BookingController::class, 'list'])->name('booking.list');
-    Route::get('/booking/create', [BookingController::class, 'create'])->name('booking.create');
+    Route::get('/booking/form', [BookingController::class, 'createform'])->name('booking.form');
     Route::post('/booking/store', [BookingController::class, 'store'])->name('booking.store');
 
     Route::get('/payment/list', [PaymentController::class, 'list'])->name('payment.list');
-    Route::get('/payment/create', [PaymentController::class, 'create'])->name('payment.create');
+    Route::get('/payment/form', [PaymentController::class, 'createform'])->name('payment.form');
 
     Route::get('/aboutus', [AboutUsController::class, 'list']);
     Route::get('/rating/list',[RatingController::class,'list'])->name('rating.list');
-    Route::get('/users/list',[UsersController::class,'list'])->name('users.list');
+});
 
+});
 });

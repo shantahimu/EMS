@@ -1,53 +1,50 @@
-<div class="sb-sidenav-menu">
+<div class="sb-sidenav-menu bg-warnning">
     <div class="nav">
-        <a class="nav-link" href="{{url('/dashboard')}}">
+        <a class="nav-link" href="{{route('dashboard')}}">
             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+ 
             Dashboard
         </a>
-        <a class="nav-link" href="{{url('users/list')}}">
+        <a class="nav-link" href="{{route('user.list')}}">
             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
             Users
         </a>
-        <a class="nav-link" href="{{url('role/list')}}">
+        <a class="nav-link" href="{{route('role.list')}}">
             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
             Role  
         </a>
-        <a class="nav-link" href="{{url('customer/list')}}">
+        <a class="nav-link" href="{{route('customer.list')}}">
             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
             Customer 
         </a>
-        <a class="nav-link" href="{{url('staff/list')}}">
-            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-            Staff 
-        </a>
 
-        <a class="nav-link" href="{{url('eventtype/list')}}">
+        <a class="nav-link" href="{{route('event.list')}}">
             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-            Event Type 
+            Event 
         </a>
         </a> 
-        <a class="nav-link" href="{{url('servicecategory/list')}}">
+        <a class="nav-link" href="{{route('service.list')}}">
             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-            Service Category 
+            Service  
         </a>  
-        <a class="nav-link" href="{{url('package/list')}}">
+        <a class="nav-link" href="{{route('package.list')}}">
             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
             Package 
         </a> 
        
-        <a class="nav-link" href="{{url('/booking/list')}}">
+        <a class="nav-link" href="{{route('booking.list')}}">
             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
             Booking
         </a>
-        <a class="nav-link" href="{{url('/payment/list')}}">
+        <a class="nav-link" href="{{route('payment.list')}}">
             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
             Payment
         </a> 
-        <a class="nav-link" href="{{url('feedback/list')}}">
+        <a class="nav-link" href="{{url('/feedback/list')}}">
             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
             Feed Back
         </a>  
-        <a class="nav-link" href="{{url('rating/list')}}">
+        <a class="nav-link" href="{{url('/rating/list')}}">
             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
             Rating
         </a>
