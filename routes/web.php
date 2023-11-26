@@ -15,8 +15,9 @@ use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\CustomerController;
 use App\Http\Controllers\Frontend\CustomerController as FrontendCustomerController;
 use App\Http\Controllers\Frontend\HomeController as FrontendHomeController; 
-use App\Http\Controllers\Frontend\EventController as FrontendEventController;
 use App\Http\Controllers\Frontend\AboutUsController as FrontendAboutUs;
+use App\Http\Controllers\Frontend\EventController as FrontendEventController;
+use App\Http\Controllers\Frontend\ServiceController as FrontendServiceController;
 use App\Http\Controllers\Frontend\MasterController;
 
 /*
@@ -38,9 +39,15 @@ Route::post('/registration', [FrontendCustomerController::class,'registrationsto
 
 Route::get('/login',[FrontendCustomerController::class, 'login'])->name('login');
 Route::post('/login',[FrontendCustomerController::class,'dologin'])->name('customer.do.login');
-Route::get('/book-event', [FrontendEventController::class, 'bookEvent'])->name('event.book');
+
 
 Route::get('/frontendaboutus',[FrontendAboutUs::class,'aboutus'])->name('aboutus');
+
+Route::get('/event-details',[FrontendEventController::class,'event'])->name('event-details');
+
+Route::get('/service',[FrontendServiceController::class,'service'])->name('User_service');
+Route::get('/single-service/{id}',[FrontendServiceController::class,'singleServiceview'])->name('single.service');
+
 
 Route::group(['middleware'=>'auth'],function(){
     Route::get('/profile',[FrontendCustomerController::class,'profile'])->name('profile.view');
@@ -88,6 +95,7 @@ Route::group(['middleware'=>'auth'], function () {
     Route::get('/service/list', [ServiceController::class, 'list'])->name('service.list');
     Route::get('/service/form', [ServiceController::class, 'form'])->name('service.form');
     Route::post('/service/store', [ServiceController::class, 'store'])->name('service.store');
+    Route::get('/service/view/{id}',[ServiceController::class,'view'])->name('service.view');
     Route::get('/service/delete/{id}',[ServiceController::class,'delete'])->name('service.delete');
     Route::get('/service/edit/{id}',[ServiceController::class,'edit'])->name('service.edit');
     Route::put('/service/update/{id}',[ServiceController::class,'update'])->name('service.update');

@@ -22,11 +22,11 @@
       <!-- <th scope="row">{{$service->id}}</th> -->
       <td>{{$service->services }}</td>
       <td>{{$service->description}}</td>
-      <td><img style="border-radius: 60px;" width="20%" src="{{url('/uploads/'.$service->image)}}" alt="image"></td>
+      <td><img style="border-radius: 60px;" width="20%" src="{{url('/uploads/'.$service->images)}}" alt="image"></td>
 
-      <td>
+      <td class="col-3">
         <a class= "btn btn-success" href="{{route('service.edit', $service->id)}}">Edit</a>
-        <a herf="" class= "btn btn-primary">View</a>
+        <a class= "btn btn-primary" href="{{route('service.view', $service->id)}}">View</a>
         <a class= "btn btn-danger" href="{{route('service.delete', $service->id)}}">Delete</a>
       </td>
     </tr>  

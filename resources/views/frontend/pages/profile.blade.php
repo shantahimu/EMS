@@ -79,9 +79,6 @@
                                                 {{ auth()->user()->role }}
                                             </div>
                                         </div>
-                                        
-                                        
-
                                     </div>
                                     <div class="tab-pane fade" id="connectedServices" role="tabpanel" aria-labelledby="ConnectedServices-tab">
                                         Facebook, Google, Twitter Account that are connected to this account
@@ -89,10 +86,7 @@
                                 </div>
                             </div>
                         </div>
-
-
                     </div>
-
                 </div>
             </div>
         </div>

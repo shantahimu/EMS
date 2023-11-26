@@ -12,9 +12,9 @@
         <ul>
           <li><a href="{{route('frontendhome')}}">Home</a></li>
           <li><a href="{{route('aboutus')}}">About Us</a></li>
-          <li><a href="event">Event</a></li>
+          <li><a href="event-details">Event</a></li>
           <li><a href="package">Packages</a></li>
-          <li><a href="service">Services</a></li>
+          <li><a href="{{route('User_service')}}">Services</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </nav><!-- .navbar -->
@@ -31,7 +31,7 @@
 
                 @auth
                 <a href="{{ route('customer.logout') }}">Logout</a>
-                <a href="{{route('profile.view')}}"> {{auth()->user()->name}} ({{ auth()->user()->role }})</a>
+                <a href="{{route('profile.view')}}"><i class="bi bi-file-person-fill"></i> {{auth()->user()->name}}</a>
 
                 @endauth
     </div>

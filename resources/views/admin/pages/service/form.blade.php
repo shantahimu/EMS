@@ -2,9 +2,9 @@
 
 @section('content')
 
-<h1>Insert Service </h1>
 
-<form action="{{route('service.store')}}" method='post'>
+
+<form action="{{route('service.store')}}" method='post' enctype="multipart/form-data">
     @csrf
     <div class="form-group">
       <label for="service_name">Service Name</label>
@@ -18,8 +18,8 @@
       <input name="description" type="text" class="form-control" id="inputAddress" placeholder="">
     </div>
     <div class="custom-file">
+      <label class="custom-file-label" for="validatedCustomFile">Choose file...</label><br>
         <input required name="image" type="file" class="custom-file-input" id="validatedCustomFile" required>
-        <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
         @error('image')
           <div class ="alert alert-danger">{{$message}}</div>
           @enderror

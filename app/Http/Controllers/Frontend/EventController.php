@@ -8,9 +8,9 @@ use Illuminate\Http\Request;
 class EventController extends Controller
 {
     // Book Event Page
-    public function bookEvent()
+    public function event()
     {
-        return view('frontend.pages.book_event');
+        return view('frontend.pages.event');
     }
 }
 
