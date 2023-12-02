@@ -12,7 +12,7 @@
       <th scope="col">Image</th>
       <th scope="col">Email</th>
       <th scope="col">Role</th>
-      <th scope="col">Action</th>
+      {{-- <th scope="col">Action</th> --}}
     </tr>
   </thead>
 
@@ -21,15 +21,15 @@
         <td>{{$key+1}}</td>
         <td>{{$singleUser->name}}</td>
         <td>
-            <img style="border-radius: 60px;" width="7%" src="{{url('/uploads/'.$singleUser->image)}}" alt="image">
+            <img style="border-radius: 60px;" width="7%" src="{{url('uploads/'.$singleUser->image)}}" alt="image">
         </td>
         <td>{{$singleUser->email}}</td>
         <td>{{$singleUser->role}}</td>
-        <td>
+        {{-- <td>
             <a class="btn btn-success" href="">View</a>
             <a class="btn btn-warning" href="">Edit</a>
             <a  class="btn btn-danger"href="">Delete</a>
-        </td>
+        </td> --}}
     </tr>
   @endforeach
 

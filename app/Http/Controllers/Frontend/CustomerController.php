@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Booking;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 
 class CustomerController extends Controller
@@ -16,23 +17,21 @@ class CustomerController extends Controller
     }
 
     public function profile(){
-        return view('frontend.pages.profile');
+        $booking=Booking::where('user_id',auth()->user()->id)->get();
+        return view('frontend.pages.profile', compact('booking'));
     }
-
-
-
 
     public function registrationstore(Request $request)
     {
         // dd($request->all());
         $validate =Validator::make($request->all(), [
             'name' => 'required',
-            'email' => 'required|email|unique:user',
+            'email' => 'required|email',
             'password' => 'required|min:6',
         ]); 
 
         if($validate->fails()){
-            notify()->error($validate->errors()->first());
+            notify()->error('Invalid User & Password');
             return redirect()->back();
         }
 

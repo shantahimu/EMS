@@ -18,6 +18,10 @@
       <label for="inputAddress">Description</label>
       <input value="{{$services->description}}" name="description" type="text" class="form-control" id="inputAddress" placeholder="">
     </div>
+    <div class="form-group">
+      <label for="inputAddress">Service Price</label>
+      <input value="{{$services->service_price}}" name="service_price" type="text" class="form-control" id="inputAddress" placeholder="">
+    </div>
     <div class="custom-file">
         <input value="{{$services->images}}" required name="image" type="file" class="custom-file-input" id="validatedCustomFile" required>
         <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>

@@ -17,6 +17,6 @@
 
 @section('content')
 
-@include('frontend.partials.item')
+@include('frontend.partials.footer')
 
 @endsection

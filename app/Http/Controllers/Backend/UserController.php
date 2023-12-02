@@ -78,7 +78,7 @@ class UserController extends Controller
             $file=$request->file('user_image');
             $fileName=date('Ymdhis').'.'.$file->getClientOriginalExtension();
            
-            $file->storeAs('/uploads',$fileName);
+            $file->storeAs('/',$fileName);
 
         }
 

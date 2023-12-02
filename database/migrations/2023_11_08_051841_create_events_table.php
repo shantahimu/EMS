@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('event_name');
             $table->text('event_description')->nullable();
-            $table->string('status');
+            $table->string('event_image');
             $table->timestamps();
         });
     }

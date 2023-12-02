@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('bookings', function (Blueprint $table) {
             $table->id();
-            $table->string('event_day');
-            $table->string('event_starts');
-            $table->string('event_ends');
-            $table->double('amount');
+            $table->foreignId('user_id')->constrained();
+            $table->foreignId('service_id')->nullable()->constrained('services');
+            $table->foreignId('event_id')->nullable()->constrained('events');
+            $table->string('status')->default('pending');
             $table->timestamps();
         });
     }

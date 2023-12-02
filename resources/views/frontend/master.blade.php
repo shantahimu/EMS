@@ -3,6 +3,14 @@
 
 <head>
   <meta charset="utf-8">
+  @notifyCss
+  <style>
+    .notify{
+      z-index: 1000000;
+      position: absolute;
+      top: 10%;
+    }
+  </style>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
   <title> Event Vibes </title>
@@ -25,20 +33,15 @@
   <link href="{{url('frontend/')}}/assets/vendor/aos/aos.css" rel="stylesheet">
   <link href="{{url('frontend/')}}/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="{{url('frontend/')}}/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
+  
   <!-- Template Main CSS File -->
   <link href="{{url('frontend/')}}/assets/css/main.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
-  <!-- =======================================================
-  * Template Name: Yummy
-  * Updated: Sep 18 2023 with Bootstrap v5.3.2
-  * Template URL: https://bootstrapmade.com/yummy-bootstrap-restaurant-website-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
 </head>
 
 <body>
+  <x-notify::notify />
 
   @include('frontend.partials.header')
 
@@ -74,7 +77,7 @@
 
   <!-- Template Main JS File -->
   <script src="{{url('frontend/')}}/assets/js/main.js"></script>
-
+  @notifyJs
 </body>
 
 </html>

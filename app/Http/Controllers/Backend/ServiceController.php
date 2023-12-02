@@ -12,7 +12,7 @@ class ServiceController extends Controller
 {
     public function list()
     {
-        $services = Service::paginate(10);
+        $services = Service::paginate(5);
         return view('admin.pages.service.list', compact('services'));
     }
 
@@ -51,11 +51,12 @@ class ServiceController extends Controller
                 $file = $request->file('image');
                 $fileName = date('Ymdhis') . '.' . $file->getClientOriginalExtension();
 
-                $file->storeAs('/uploads', $fileName);
+                $file->storeAs('uploads/', $fileName);
             }
             $services->update([
                 'services' => $request->service_name,
                 'description' => $request->description,
+                'service_price' => $request->service_price,
                 'images' => $fileName,
 
             ]);
@@ -66,9 +67,7 @@ class ServiceController extends Controller
         
         
     }
-
-
-
+    
     public function form()
     {
         return view('admin.pages.service.form');
@@ -103,6 +102,7 @@ class ServiceController extends Controller
         Service::create([
             'services' => $request->service_name,
             'description' => $request->description,
+            'service_price' => $request->service_price,
             'images' => $fileName,
 
         ]);
@@ -111,4 +111,5 @@ class ServiceController extends Controller
 
         
     }
+    
 }

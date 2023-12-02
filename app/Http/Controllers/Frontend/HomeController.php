@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     public function home(){
-        $services=Service::all();
-        return view('frontend.pages.home',compact('services'));
+        return view('frontend.pages.home');
     }
 }

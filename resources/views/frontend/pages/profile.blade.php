@@ -20,7 +20,6 @@
                                 </div>
                                 <div class="userData ml-3">
                                     <h2 class="d-block" style="font-size: 1.5rem; font-weight: bold"><a href="javascript:void(0);">{{auth()->user()->name}}</a></h2>
-                                    <h6 class="d-block"><a href="javascript:void(0)">2000</a> Pending Payment</h6>
                                 </div>
                                 <div class="ml-auto">
                                     <input type="button" class="btn btn-primary d-none" id="btnDiscard" value="Discard Changes" />
@@ -91,4 +90,33 @@
             </div>
         </div>
     </div>
+    <hr>
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">List</th>
+      <th scope="col">Date</th>
+      <th scope="col">Service</th>
+      <th scope="col">Event</th>
+      <th scope="col">Status</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    @foreach ($booking as $key=> $singleBooking)
+    <tr> 
+        <th scope="row">{{$key+1}}</th>
+        <td>{{ $singleBooking->created_at }}</td>
+        <td>{{ $singleBooking->service_id }}</td>
+        <td>{{ $singleBooking->event_id }}</td>
+        <td>{{ $singleBooking->status }}</td>
+        <td>
+            @if($singleBooking->status=='pending')
+                <a class="btn btn-danger" href="{{ route('booking.cancel', $singleBooking->id) }}">Cancel Booking</a>
+            @endif  
+        </td>
+    </tr>
+@endforeach
+  </tbody>
 @endsection

@@ -5,8 +5,9 @@
 
 <div class="container">
   <div class="row">
-    <form action ="{{route('event.store')}}"method = 'post' enctype="multipart/form-data">>
+    <form action ="{{route('event.update', $events->id)}}"method = 'post' enctype="multipart/form-data">>
       @csrf
+      @method('put')
       <div class="form-group">
         <label for="event_name">Event Name</label>
         <input required name="event_name" type="text" class="form-control" id="event_name" placeholder="Event Name"> 

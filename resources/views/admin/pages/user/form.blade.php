@@ -6,7 +6,7 @@
 <h1>Create new User</h1>
 
 
-<form action="{{route('user.store')}}" method="post" enctype="multipart/form-data">
+<form action="{{route('user.store')}}" method="post" enctype="multipart/form-data">++
 
         @if(session()->has('myError'))
         <p class="alert alert-danger">{{session()->get('myError')}}</p>
