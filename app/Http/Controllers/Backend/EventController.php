@@ -15,7 +15,6 @@ class EventController extends Controller
         return view('admin.pages.event.list', compact('events'));
     }
 
-    
     public function delete($id)
     {
         // dd('hi');

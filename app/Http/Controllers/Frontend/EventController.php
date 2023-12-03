@@ -8,7 +8,6 @@ use App\Http\Controllers\Controller;
 
 class EventController extends Controller
 {
-    // Book Event Page
     public function event()
     {
         $events=Event::all();

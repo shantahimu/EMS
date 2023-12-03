@@ -1,4 +1,3 @@
-<!-- ======= Header ======= -->
 <header id="header" class="header fixed-top d-flex align-items-center">
     <div class="container d-flex align-items-center justify-content-between">
 
@@ -16,7 +15,11 @@
           <li><a href="{{route('User_service')}}">Services</a></li>
           <li><a href="#contact">Contact</a></li>
           <li><a href="#">About Us</a></li>
-        </ul>
+          
+          <form action="{{route('search')}}"method=get>
+          <input type="text" class="form-control" placeholder="Search..." name="search">
+          <button type="submit" class="btn btn-primary">Search</button>
+          </ul>
       </nav><!-- .navbar -->
       
       <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
@@ -33,4 +36,5 @@
 
                 @endauth
     </div>
+  </form>
   </header><!-- End Header -->

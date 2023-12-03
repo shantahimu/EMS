@@ -35,6 +35,8 @@ use App\Http\Controllers\Frontend\MasterController;
 Route::get('/',[FrontendHomeController::class,'home'])->name('frontendhome');
 Route::get('/master',[MasterController::class,'master'])->name('master');
 
+Route::get('search-service',[FrontendHomeController::class,'search'])->name('search');
+
 Route::get('/registration',[FrontendCustomerController::class,'registration'])->name('customer.registration');
 Route::post('/registration', [FrontendCustomerController::class,'registrationstore'])->name('customer.store');
 
@@ -51,6 +53,8 @@ Route::get('/single-service/{id}',[FrontendServiceController::class,'singleServi
 
 Route::group(['middleware'=>'auth'],function(){
     Route::get('/profile',[FrontendCustomerController::class,'profile'])->name('profile.view');
+    Route::get('/profile/edit', [FrontendCustomerController::class, 'edit'])->name('profile.edit');
+    Route::put('profile/update',[FrontendCustomerController::class,'update'])->name('profile.update');
     
 
     Route::get('/book-now/{service_id}',[FrontendBookingController::class,'bookNow'])->name('book.now');

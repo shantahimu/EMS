@@ -8,14 +8,13 @@
         <div class="row">
             <div class="col-12">
                 <div class="card">
-
                     <div class="card-body">
                         <div class="card-title mb-4">
                             <div class="d-flex justify-content-start">
                                 <div class="image-container">
                                     <img src="http://placehold.it/150x150" id="imgProfile" style="width: 150px; height: 150px" class="img-thumbnail" />
                                     <div class="middle">
-                                        <a href="">Edit</a>
+                                        <a href="{{route('profile.edit')}}">Edit</a>
                                     </div>
                                 </div>
                                 <div class="userData ml-3">

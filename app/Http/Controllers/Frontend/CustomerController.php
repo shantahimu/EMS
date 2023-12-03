@@ -20,6 +20,25 @@ class CustomerController extends Controller
         $booking=Booking::where('user_id',auth()->user()->id)->get();
         return view('frontend.pages.profile', compact('booking'));
     }
+    public function edit()
+    {
+        $users = User::all();
+        return view('frontend.pages.profileedit');
+    }
+    public function update(Request $request){
+        $fileName=null;
+        if($request->hasFile('user_image'))
+        {
+            $file=$request->file('user_image');
+            $fileName=date('Ymdhis').'.'.$file->getClientOriginalExtension();
+           
+            $file->storeAs('/',$fileName);
+        }
+        return redirect()->route('user.edit')->with('message','User info updated successfully.');
+
+
+    }
+
 
     public function registrationstore(Request $request)
     {
