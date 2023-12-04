@@ -13,6 +13,7 @@
         <th scope="col">Event ID</th>
         <th scope="col">Event Name</th>
         <th scope="col">Description</th>
+        <th scope="col">Event Price</th>
         <th scope="col">Event Image</th>
         <th scope="col">Action</th>
       </tr>
@@ -36,5 +37,5 @@
       
     </tbody>
   </table>
-  {{-- {{$events->links()}} --}}
+  {{$events->links()}}
 @endsection

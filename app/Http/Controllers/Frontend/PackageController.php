@@ -10,7 +10,7 @@ class PackageController extends Controller
 {
     public function singleview($id){
         $singleevent =Event::find($id);
-        // dd($events);
+        //dd($singleevent);
 
         return view('frontend.pages.singleEvent',compact('singleevent'));
     }    

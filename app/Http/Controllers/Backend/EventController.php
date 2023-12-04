@@ -53,6 +53,7 @@ class EventController extends Controller
             $events->update([
                 'event_name'=>$request->event_name,
                 'event_description'=>$request->event_description,
+                'event_price'=>$request->event_price,
                 'event_image' => $fileName,
 
             ]);
@@ -71,6 +72,7 @@ class EventController extends Controller
         // dd($request);
         $validate=Validator::make($request->all(),[
             'event_name'=>'required',
+            'event_price'=>'required'
 
         ]); 
         if ($validate->fails()) {
@@ -97,6 +99,7 @@ class EventController extends Controller
         Event::create([
             'event_name'=>$request->event_name,
             'event_description'=>$request->event_description,
+            'event_price'=>$request->event_price,
             'event_image' => $fileName,
         
 

@@ -18,7 +18,14 @@
       <div class="form-row">
         <div class="form-group 2">
           <label for="inputContactNumber">Description</label>
-          <input name="event_description" type="text" class="form-control" id="">
+          <input name="event_description" type="text" class="form-control" id="event_description" placeholder="Write about event description">
+        </div>
+        <div class="form-group 2">
+          <label for="inputContactNumber">Event Price</label>
+          <input name="event_price" type="text" class="form-control" id="event_price" placeholder="event_price" required>
+          @error('event_price')
+              <div class ="alert alert-danger">{{$message}}</div>
+              @enderror
         </div>
         <div class="custom-file">
           <label class="custom-file-label" for="validatedCustomFile">Choose file...</label><br>
