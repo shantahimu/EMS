@@ -3,7 +3,7 @@
 
 <h1>Packages </h1>
 
-<a href= "{{route('package.form')}}"type ="button" class="btn btn-info bg-info text-dark">Add</a>
+<a href= "{{route('package.form')}}"type ="button" class="btn btn-info bg-info text-dark">Add Package </a>
 <table class="table">
     <thead>
       <tr>

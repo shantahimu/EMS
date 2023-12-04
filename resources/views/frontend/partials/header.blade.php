@@ -1,24 +1,39 @@
+<style>
+  * a{
+    text-decoration: none;
+  }
+</style>
+
 <header id="header" class="header fixed-top d-flex align-items-center">
     <div class="container d-flex align-items-center justify-content-between">
 
       <a href="index.html" class="logo d-flex align-items-center me-auto me-lg-0">
-        <!-- Uncomment the line below if you also wish to use an image logo -->
-        <!-- <img src="assets/img/logo.png" alt=""> -->
         <h1>Event Vibes</h1>
       </a>
 
-      <nav id="navbar" class="navbar">
+      <nav id="navbar" class="col-8 navbar">
         <ul>
           <li><a href="{{route('frontendhome')}}">Home</a></li>
-          <li><a href="#">Portfolio</a></li>
-          <li><a href="event-details">Event</a></li>
+          <li class="dropdown"><a href="#"><span>Package</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+            <ul>
+              <li class="dropdown"><a href="#"><span>Events</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+                <ul>
+                  @foreach($events as $event)
+                  <li><a href="{{route('single.view', $event->id)}}">{{$event->event_name}}</a></li>
+                  @endforeach
+                </ul> 
+              </li>
+            </ul>
+          </li>
+  
           <li><a href="{{route('User_service')}}">Services</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="{{route('user.contact')}}">Contact Us</a></li>
           <li><a href="#">About Us</a></li>
-          
           <form action="{{route('search')}}"method=get>
-          <input type="text" class="form-control" placeholder="Search..." name="search">
-          <button type="submit" class="btn btn-primary">Search</button>
+            <div class="input-group">
+              <input name="search" type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+              <button type="submit" class="btn btn-outline-primary" data-mdb-ripple-init>search</button>
+            </div>
           </ul>
       </nav><!-- .navbar -->
       

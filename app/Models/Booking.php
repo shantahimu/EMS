@@ -9,4 +9,9 @@ class Booking extends Model
 {
     use HasFactory;
     protected $guarded=[];
+
+    public function event(){
+
+        $this->belongsTo(Event::class('event_id','id'));
+    }
 }

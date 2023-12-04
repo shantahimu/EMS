@@ -16,8 +16,9 @@ use App\Http\Controllers\Backend\CustomerController;
 use App\Http\Controllers\Frontend\CustomerController as FrontendCustomerController;
 use App\Http\Controllers\Frontend\HomeController as FrontendHomeController; 
 use App\Http\Controllers\Frontend\AboutUsController as FrontendAboutUs;
+use App\Http\Controllers\Frontend\PackageController as FrontendPackageController;
+use App\Http\Controllers\Frontend\ContactusController as FrontendContactusController;
 use App\Http\Controllers\Frontend\BookingController as FrontendBookingController;
-use App\Http\Controllers\Frontend\EventController as FrontendEventController;
 use App\Http\Controllers\Frontend\ServiceController as FrontendServiceController;
 use App\Http\Controllers\Frontend\MasterController;
 
@@ -44,8 +45,8 @@ Route::get('/login',[FrontendCustomerController::class, 'login'])->name('login')
 Route::post('/login',[FrontendCustomerController::class,'dologin'])->name('customer.do.login');
 
 
-Route::get('/event-details',[FrontendEventController::class,'event'])->name('event-details');
-Route::get('single-event/{id}',[FrontendEventController::class,'singleEventview'])->name('single.event');
+Route::get('/package',[FrontendPackageController::class,'package'])->name('user.package');
+Route::get('single-view/{id}',[FrontendPackageController::class,'singleview'])->name('single.view');
 
 Route::get('/service',[FrontendServiceController::class,'service'])->name('User_service');
 Route::get('/single-service/{id}',[FrontendServiceController::class,'singleServiceview'])->name('single.service');
@@ -55,12 +56,14 @@ Route::group(['middleware'=>'auth'],function(){
     Route::get('/profile',[FrontendCustomerController::class,'profile'])->name('profile.view');
     Route::get('/profile/edit', [FrontendCustomerController::class, 'edit'])->name('profile.edit');
     Route::put('profile/update',[FrontendCustomerController::class,'update'])->name('profile.update');
+
+    Route::get('/contactus',[FrontendContactusController::class,'contact'])->name('user.contact');
     
 
     Route::get('/book-now/{service_id}',[FrontendBookingController::class,'bookNow'])->name('book.now');
     Route::get('/cancel-booking/{service_id}',[FrontendBookingController::class,'cancelBooking'])->name('booking.cancel');
-    Route::get('book-now/{event_id}',[FrontendBookingController::class,'startbooking'])->name('booking');
-    Route::get('cancel-booking/{event_id}',[FrontendBookingController::class,'bookcancel'])->name('cancel');
+
+
     Route::get('/logout',[FrontendCustomerController::class, 'logout'])->name('customer.logout');
 });
  
@@ -96,12 +99,11 @@ Route::group(['middleware'=>'auth'], function () {
    
     Route::get('/customer/list', [CustomerController::class, 'list'])->name('customer.list');
     Route::get('/customer/form', [CustomerController::class, 'createform'])->name('customer.form');
-    Route::post('/customer/store', [CustomerController::class, 'store'])->name('customer.store');
+   Route::post('/customer/store', [CustomerController::class, 'store'])->name('customer.store');
 
     Route::get('/user/list',[UserController::class,'list'])->name('user.list');
     Route::get('/user/form',[UserController::class,'createform'])->name('user.form');
     Route::post('/user/store',[UserController::class,'store'])->name('user.store');
-
     
     Route::get('/service/list', [ServiceController::class, 'list'])->name('service.list');
     Route::get('/service/form', [ServiceController::class, 'form'])->name('service.form');

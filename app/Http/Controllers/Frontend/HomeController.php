@@ -3,14 +3,17 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Event;
 use App\Models\Service;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     public function home(){
-        return view('frontend.pages.home');
+        $events = Event::all();
+        return view('frontend.pages.home',compact('events'));
     }
+    
 
     public function search(Request $request){
         if ($request->search){

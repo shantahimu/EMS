@@ -8,7 +8,7 @@
     .notify{
       z-index: 1000000;
       position: absolute;
-      top: 10%;
+      top: 8%;
     }
   </style>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -16,6 +16,7 @@
   <title> Event Vibes </title>
   <meta content="" name="description">
   <meta content="" name="keywords">
+
 
   <!-- Favicons -->
   <link href="{{url('frontend/')}}/assets/img/favicon.png" rel="icon">
@@ -38,6 +39,7 @@
   <link href="{{url('frontend/')}}/assets/css/main.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
+  
 </head>
 
 <body>
@@ -59,6 +61,8 @@
 
 
 
+
+
 </main><!-- End #main -->
 
   
@@ -74,6 +78,8 @@
   <script src="{{url('frontend/')}}/assets/vendor/purecounter/purecounter_vanilla.js"></script>
   <script src="{{url('frontend/')}}/assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="{{url('frontend/')}}/assets/vendor/php-email-form/validate.js"></script>
+
+  
 
   <!-- Template Main JS File -->
   <script src="{{url('frontend/')}}/assets/js/main.js"></script>

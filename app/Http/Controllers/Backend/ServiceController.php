@@ -16,8 +16,6 @@ class ServiceController extends Controller
         return view('admin.pages.service.list', compact('services'));
     }
 
-
-
     public function delete($id)
     {
         // dd('hi');
@@ -51,7 +49,7 @@ class ServiceController extends Controller
                 $file = $request->file('image');
                 $fileName = date('Ymdhis') . '.' . $file->getClientOriginalExtension();
 
-                $file->storeAs('uploads/', $fileName);
+                $file->storeAs('/', $fileName);
             }
             $services->update([
                 'services' => $request->service_name,

@@ -19,10 +19,10 @@
                 </div>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">{{ $services->service }}</li> 
-                    <li class="list-group-item">{{ $services->service_price }}</li>
+                    <li class="list-group-item">{{ $services->service_price }}.BTD</li>
                 </ul>
                 <div class="">
-                    <a class="btn btn-primary" href="{{route('booking', $services->id)}}">Book Now</a>
+                    <a class="btn btn-primary" href="{{route('book.now', $services->id)}}">Book Now</a>
                 </div>
             </div>
         </div>

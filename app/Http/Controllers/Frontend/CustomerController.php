@@ -35,11 +35,7 @@ class CustomerController extends Controller
             $file->storeAs('/',$fileName);
         }
         return redirect()->route('user.edit')->with('message','User info updated successfully.');
-
-
     }
-
-
     public function registrationstore(Request $request)
     {
         // dd($request->all());

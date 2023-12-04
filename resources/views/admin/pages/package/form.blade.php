@@ -7,7 +7,7 @@
     <div class="form-group">
         <label for="package_name">Package Name</label>
         <label for="eventPackage">Select Event Package:</label>
-        <select class="form-control" name="eventPackage" id="eventPackage" required>
+        <select class="form-control" name="package_name" id="eventPackage" required>
             <option value="" disabled>Select a Package</option>
             <option value="basic">1. Basic Package</option>
             <option value="standard">2. Standard Package</option>
@@ -24,7 +24,7 @@
     </div>
     <div class="form-group">
         <label for="description">Description</label>
-        <textarea class="form-control" name="description" id="description" cols="30" rows="10"></textarea>
+        <input required name="description" type="text" class="form-control" id="price" placeholder="Enter Description">
     </div>
     <div class="form-group">
         <label for="price">Package Price</label>
@@ -34,7 +34,7 @@
         <div class="alert alert-danger">{{ $message }}</div>
         @enderror
     </div>
-    <button type="submit" class="btn btn-info bg-info text-dark">Submit</button>
+    <button class="btn btn-info bg-info text-dark" type="submit" >Submit</button>
 </form>
 
 @endsection

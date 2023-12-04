@@ -14,7 +14,9 @@
                                 <div class="image-container">
                                     <img src="http://placehold.it/150x150" id="imgProfile" style="width: 150px; height: 150px" class="img-thumbnail" />
                                     <div class="middle">
-                                        <a href="{{route('profile.edit')}}">Edit</a>
+                                        <form action="{{route('profile.edit')}}"method = 'get' enctype="multipart/form-data>>
+                                            @csrf
+                                        <button type="edit" class="btn btn-info bg-info text-dark">Edit</button>
                                     </div>
                                 </div>
                                 <div class="userData ml-3">
@@ -96,7 +98,6 @@
       <th scope="col">List</th>
       <th scope="col">Date</th>
       <th scope="col">Service</th>
-      <th scope="col">Event</th>
       <th scope="col">Status</th>
       <th scope="col">Action</th>
     </tr>
@@ -108,7 +109,6 @@
         <th scope="row">{{$key+1}}</th>
         <td>{{ $singleBooking->created_at }}</td>
         <td>{{ $singleBooking->service_id }}</td>
-        <td>{{ $singleBooking->event_id }}</td>
         <td>{{ $singleBooking->status }}</td>
         <td>
             @if($singleBooking->status=='pending')
