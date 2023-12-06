@@ -7,7 +7,6 @@
 
 @endsection
 
-
 @section('about')
 
 @include('frontend.partials.about')

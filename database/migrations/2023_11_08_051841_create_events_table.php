@@ -15,8 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('event_name');
             $table->text('event_description')->nullable();
-            $table->string('event_price');
+            $table->string('min_price');
+            $table->string('max_price');
             $table->string('event_image');
+            $table->foreignId('service_id')->nullable();
             $table->timestamps();
         });
     }

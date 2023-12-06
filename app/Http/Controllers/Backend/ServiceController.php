@@ -43,19 +43,11 @@ class ServiceController extends Controller
     public function update(Request $request, $id)
     {
         $services = Service::find($id);
-        if ($services) {
-            $fileName = $services->image;
-            if ($request->hasFile('image')) {
-                $file = $request->file('image');
-                $fileName = date('Ymdhis') . '.' . $file->getClientOriginalExtension();
-
-                $file->storeAs('/', $fileName);
-            }
+        
             $services->update([
                 'services' => $request->service_name,
                 'description' => $request->description,
                 'service_price' => $request->service_price,
-                'images' => $fileName,
 
             ]);
 
@@ -64,20 +56,15 @@ class ServiceController extends Controller
         }
         
         
-    }
     
-    public function form()
-    {
+    
+    public function form(){
         return view('admin.pages.service.form');
     }
     
-    
-    
-    public function store(Request $request)
-    {
-
-        //dd($request);
-        $validate = Validator::make($request->all(), [
+    public function store(Request $request){
+         //dd($request);
+         $validate = Validator::make($request->all(), [
             'service_name' => 'required',
 
         ]);
@@ -86,28 +73,19 @@ class ServiceController extends Controller
             return redirect()->back()->with('myError', $validate->getMessageBag());
         }
 
-        $fileName=null;
-        // dd($request->all());
-        if($request->hasFile('image'))
-        {
-            $file=$request->file('image');
-            $fileName=date('Ymdhis').'.'.$file->getClientOriginalExtension();
-
-            $file->storeAs('/',$fileName);
-
-        }
+        
 
         Service::create([
             'services' => $request->service_name,
             'description' => $request->description,
             'service_price' => $request->service_price,
-            'images' => $fileName,
 
         ]);
 
         return redirect()->route('service.list')->with('message', 'Service created successfully.');
-
-        
     }
-    
+
+
 }
+    
+

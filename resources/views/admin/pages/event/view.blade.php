@@ -21,10 +21,13 @@
         </div>
         <div class="form-group 2">
           <label for="inputContactNumber">Event Price</label>
-          <input name="event_price" type="text" class="form-control" id="event_price" placeholder="event_price" required>
-          @error('event_price')
-              <div class ="alert alert-danger">{{$message}}</div>
-              @enderror
+          <input name="min_price" type="text" class="form-control" id="event_price" placeholder="event_price" required>
+        
+        </div>
+        <div class="form-group 2">
+          <label for="inputContactNumber">Event Price</label>
+          <input name="max_price" type="text" class="form-control" id="event_price" placeholder="event_price" required>
+          
         </div>
         <div class="custom-file">
           <label class="custom-file-label" for="validatedCustomFile">Choose file...</label><br>

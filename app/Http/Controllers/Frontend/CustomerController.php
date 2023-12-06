@@ -17,25 +17,24 @@ class CustomerController extends Controller
     }
 
     public function profile(){
-        $booking=Booking::where('user_id',auth()->user()->id)->get();
+        $booking=Booking::with('event')->where('user_id',auth()->user()->id)->get();
         return view('frontend.pages.profile', compact('booking'));
     }
-    public function edit()
+    public function edit($id)
     {
-        $users = User::all();
-        return view('frontend.pages.profileedit');
+        $users = User::find($id);
+        return view('frontend.pages.profileedit', compact('users'));
     }
-    public function update(Request $request){
-        $fileName=null;
-        if($request->hasFile('user_image'))
-        {
-            $file=$request->file('user_image');
-            $fileName=date('Ymdhis').'.'.$file->getClientOriginalExtension();
-           
-            $file->storeAs('/',$fileName);
-        }
-        return redirect()->route('user.edit')->with('message','User info updated successfully.');
+    public function update(Request $request,$id){
+        $users=User::find($id);
+        
+        $users->update([
+            'name'=>$request->name,
+            'email'=>$request->email            
+        ]);
+        return redirect()->back();
     }
+
     public function registrationstore(Request $request)
     {
         // dd($request->all());

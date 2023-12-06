@@ -20,9 +20,16 @@
           <input name="event_description" type="text" class="form-control" id="event_description" placeholder="Write about event description">
         </div>
         <div class="form-group 2">
-          <label for="inputContactNumber">Event Price</label>
-          <input name="event_price" type="text" class="form-control" id="event_price" placeholder="event_price" required>
-          @error('event_price')
+          <label for="inputContactNumber">Min Price</label>
+          <input name="min_price" type="number" class="form-control" id="event_price" placeholder="event_price" required>
+          @error('min_price')
+              <div class ="alert alert-danger">{{$message}}</div>
+              @enderror
+        </div>
+        <div class="form-group 2">
+          <label for="inputContactNumber">Max Price</label>
+          <input name="max_price" type="number" class="form-control" id="event_price" placeholder="event_price" required>
+          @error('max_price')
               <div class ="alert alert-danger">{{$message}}</div>
               @enderror
         </div>

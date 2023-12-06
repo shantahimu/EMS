@@ -5,7 +5,7 @@
 
 <div class="container">
   <div class="row">
-    <form action ="{{route('event.update', $events->id)}}"method = 'post' enctype="multipart/form-data">>
+    <form action ="{{route('event.update', $events->id)}}"method = 'post' enctype="multipart/form-data">
       @csrf
       @method('put')
       <div class="form-group">
@@ -22,8 +22,15 @@
         </div>
         <div class="form-group 2">
           <label for="inputContactNumber">Event Price</label>
-          <input name="event_price" type="text" class="form-control" id="event_price" placeholder="event_price" required>
-          @error('event_price')
+          <input name="min_price" type="text" class="form-control" id="event_price" placeholder="event_price" required>
+          @error('min_price')
+              <div class ="alert alert-danger">{{$message}}</div>
+              @enderror
+        </div>
+        <div class="form-group 2">
+          <label for="inputContactNumber">Event Price</label>
+          <input name="max_price" type="text" class="form-control" id="event_price" placeholder="event_price" required>
+          @error('max_price')
               <div class ="alert alert-danger">{{$message}}</div>
               @enderror
         </div>

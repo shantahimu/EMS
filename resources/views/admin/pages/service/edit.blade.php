@@ -22,13 +22,6 @@
       <label for="inputAddress">Service Price</label>
       <input value="{{$services->service_price}}" name="service_price" type="text" class="form-control" id="inputAddress" placeholder="">
     </div>
-    <div class="custom-file">
-        <input value="{{$services->images}}" required name="image" type="file" class="custom-file-input" id="validatedCustomFile" required>
-        <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
-        @error('image')
-          <div class ="alert alert-danger">{{$message}}</div>
-          @enderror
-      </div>
     <div class="form-group">
       <div class="form-check">
         <input class="form-check-input" type="checkbox" id="gridCheck">

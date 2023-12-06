@@ -3,9 +3,10 @@
 namespace App\Providers;
 use App\Models\Event;
 
-use Illuminate\Support\ServiceProvider;
+use App\Models\Service;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\ServiceProvider;
 USE Illuminate\Support\Facades\View;
 
 class AppServiceProvider extends ServiceProvider
@@ -27,6 +28,10 @@ class AppServiceProvider extends ServiceProvider
         if(Schema::hasTable('events')){
             $events = Event::all();
             View::share('events',$events);
+        }
+        if(Schema::hasTable('services')){
+            $services = Service::all();
+            View::share('services',$services);
         }
     }
 }

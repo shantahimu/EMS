@@ -13,7 +13,7 @@
         <th scope="col">Event ID</th>
         <th scope="col">Event Name</th>
         <th scope="col">Description</th>
-        <th scope="col">Event Price</th>
+        <th scope="col"> Price Range</th>
         <th scope="col">Event Image</th>
         <th scope="col">Action</th>
       </tr>
@@ -25,6 +25,7 @@
      
       <td>{{$event->event_name}}</td>
       <td>{{$event->event_description}}</td>
+      <td>{{$event->min_price}}-{{$event->max_price}}.BDT</td>
       <td><img style="border-radius: 60px;" width="20%" src="{{url('uploads/',$event->event_image)}}" alt="image"></td>
       <td class="col-3">
         <a class= "btn btn-success" href="{{route('event.edit', $event->id)}}">Edit</a>

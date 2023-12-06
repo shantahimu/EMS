@@ -7,7 +7,7 @@ use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\EventController;
 use App\Http\Controllers\Backend\RatingController;
 use App\Http\Controllers\Backend\AboutUsController;
-use App\Http\Controllers\Backend\BookingController;
+use App\Http\Controllers\Backend\BookingController as BackendBookingController;
 use App\Http\Controllers\Backend\PackageController;
 use App\Http\Controllers\Backend\PaymentController;
 use App\Http\Controllers\Backend\ServiceController;
@@ -17,9 +17,10 @@ use App\Http\Controllers\Frontend\CustomerController as FrontendCustomerControll
 use App\Http\Controllers\Frontend\HomeController as FrontendHomeController; 
 use App\Http\Controllers\Frontend\AboutUsController as FrontendAboutUs;
 use App\Http\Controllers\Frontend\PackageController as FrontendPackageController;
+
 use App\Http\Controllers\Frontend\ContactusController as FrontendContactusController;
 use App\Http\Controllers\Frontend\BookingController as FrontendBookingController;
-use App\Http\Controllers\Frontend\ServiceController as FrontendServiceController;
+
 use App\Http\Controllers\Frontend\MasterController;
 
 /*
@@ -36,7 +37,7 @@ use App\Http\Controllers\Frontend\MasterController;
 Route::get('/',[FrontendHomeController::class,'home'])->name('frontendhome');
 Route::get('/master',[MasterController::class,'master'])->name('master');
 
-Route::get('search-service',[FrontendHomeController::class,'search'])->name('search');
+Route::get('search-service',[FrontendPackageController::class,'search'])->name('search');
 
 Route::get('/registration',[FrontendCustomerController::class,'registration'])->name('customer.registration');
 Route::post('/registration', [FrontendCustomerController::class,'registrationstore'])->name('customer.store');
@@ -48,22 +49,23 @@ Route::post('/login',[FrontendCustomerController::class,'dologin'])->name('custo
 Route::get('/package',[FrontendPackageController::class,'package'])->name('user.package');
 Route::get('single-view/{id}',[FrontendPackageController::class,'singleview'])->name('single.view');
 
-Route::get('/service',[FrontendServiceController::class,'service'])->name('User_service');
-Route::get('/single-service/{id}',[FrontendServiceController::class,'singleServiceview'])->name('single.service');
+
 
 
 Route::group(['middleware'=>'auth'],function(){
     Route::get('/profile',[FrontendCustomerController::class,'profile'])->name('profile.view');
-    Route::get('/profile/edit', [FrontendCustomerController::class, 'edit'])->name('profile.edit');
-    Route::put('profile/update',[FrontendCustomerController::class,'update'])->name('profile.update');
-
+    Route::get('/profile/edit/{id}', [FrontendCustomerController::class, 'edit'])->name('profile.edit');
+    Route::put('profile/update/{id}',[FrontendCustomerController::class,'update'])->name('profile.update');
+    
+    
+    
     Route::get('/contactus',[FrontendContactusController::class,'contact'])->name('user.contact');
     
-
-    Route::get('/book-now/{service_id}',[FrontendBookingController::class,'bookNow'])->name('book.now');
-    Route::get('/cancel-booking/{service_id}',[FrontendBookingController::class,'cancelBooking'])->name('booking.cancel');
-
-
+    // Route::get('/get-quote',[FrontendBookingController::class,'q+uote'])->name('get.quote');
+    Route::post('booking-submit',[FrontendBookingController::class,'book'])->name('booking.submit');
+    Route::get('booking_confirm/{id}',[FrontendBookingController::class,'book_confirm'])->name('Booking_Confirm');
+    Route::get('booking_cancel/{id}',[FrontendBookingController::class,'book_cancel'])->name('Booking_Cancel');
+    
     Route::get('/logout',[FrontendCustomerController::class, 'logout'])->name('customer.logout');
 });
  
@@ -116,6 +118,11 @@ Route::group(['middleware'=>'auth'], function () {
     Route::get('/package/list', [PackageController::class, 'list'])->name('package.list');
     Route::get('/package/form',[PackageController::class,'createform'])->name('package.form');
     Route::post('/package/store',[PackageController::class,'store'])->name('package.store');
+    
+    
+    Route::get('/booking/list', [BackendBookingController::class, 'list'])->name('booking.list');
+    Route::get('/update-price/{id}',[BackendBookingController::class,'update'])->name('update');
+    Route::put('/updated/{id}',[BackendBookingController::class,'priceupdated'])->name('price.update');
    
     Route::get('/payment/list', [PaymentController::class, 'list'])->name('payment.list');
     Route::get('/payment/form', [PaymentController::class, 'createform'])->name('payment.form');

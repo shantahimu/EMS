@@ -31,9 +31,9 @@
             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
             Package 
         </a> 
-        <a class="nav-link" href="{{route('payment.list')}}">
+        <a class="nav-link" href="{{route('booking.list')}}">
             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-            Payment
+            Booking
         </a> 
         <a class="nav-link" href="{{url('/feedback/list')}}">
             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>

@@ -14,8 +14,12 @@ return new class extends Migration
         Schema::create('bookings', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained();
-            $table->foreignId('service_id')->constrained();
-            $table->string('status')->default('pending');
+            $table->foreignId('event_id')->constrained();
+            $table->string('guest');
+            $table->string('location');
+            $table->string('remarks');
+            $table->string('status');
+            $table->string('price')->nullable();
             $table->timestamps();
         });
     }

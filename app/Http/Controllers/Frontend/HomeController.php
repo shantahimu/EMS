@@ -14,14 +14,4 @@ class HomeController extends Controller
         return view('frontend.pages.home',compact('events'));
     }
     
-
-    public function search(Request $request){
-        if ($request->search){
-            $services=Service::where('services','LIKE','%'.$request->search.'%')->get();
-        }
-        else{
-            $services=Service::all();
-        }
-        return view('frontend.pages.search',compact('services'));
-    }
 }

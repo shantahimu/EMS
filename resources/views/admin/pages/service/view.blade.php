@@ -6,13 +6,6 @@
 
 <form action="{{ route('service.view', $services->id) }}" method='post'>
     @csrf
-
-    <!-- Display the Image -->
-    <div class="form-group">
-        <label for="service_image">Service Image</label><br>
-        <img src="{{ asset('uploads/' . $services->images) }}" alt="Service Image" style="max-width: 300px;">
-    </div>
-
     <!-- Display Service Name -->
     <div class="form-group">
         <label for="service_name">Service Name</label>

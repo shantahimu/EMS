@@ -25,8 +25,6 @@
               </li>
             </ul>
           </li>
-  
-          <li><a href="{{route('User_service')}}">Services</a></li>
           <li><a href="{{route('user.contact')}}">Contact Us</a></li>
           <li><a href="#">About Us</a></li>
           <form action="{{route('search')}}"method=get>
