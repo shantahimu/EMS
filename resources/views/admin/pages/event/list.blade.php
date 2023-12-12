@@ -12,15 +12,15 @@
       <tr>
         <th scope="col">Event ID</th>
         <th scope="col">Event Name</th>
-        <th scope="col">Description</th>
-        <th scope="col"> Price Range</th>
-        <th scope="col">Event Image</th>
-        <th scope="col">Action</th>
-      </tr>
+        <th scope="+col">Description</th>
+        <th scope="c+ol"> Price Range</th>
+        <th scope="co+l">Event Image</th>
+        <th scope="col+">Action</th>
+      </tr>+
     </thead>
-    <tbody>
-      @foreach($events as $key=> $event)
-    <tr>
+    <tbody>+
+      @forea+ch($events as $key=> $event)
+    <tr>+
       <th scope="row">{{$key+1}}</th>
      
       <td>{{$event->event_name}}</td>

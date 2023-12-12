@@ -71,9 +71,7 @@ class ServiceController extends Controller
         if ($validate->fails()) {
 
             return redirect()->back()->with('myError', $validate->getMessageBag());
-        }
-
-        
+        } 
 
         Service::create([
             'services' => $request->service_name,

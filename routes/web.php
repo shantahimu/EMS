@@ -22,6 +22,7 @@ use App\Http\Controllers\Frontend\ContactusController as FrontendContactusContro
 use App\Http\Controllers\Frontend\BookingController as FrontendBookingController;
 
 use App\Http\Controllers\Frontend\MasterController;
+use App\Http\Controllers\SslCommerzPaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -61,8 +62,22 @@ Route::group(['middleware'=>'auth'],function(){
     
     Route::get('/contactus',[FrontendContactusController::class,'contact'])->name('user.contact');
     
-    // Route::get('/get-quote',[FrontendBookingController::class,'q+uote'])->name('get.quote');
     Route::post('booking-submit',[FrontendBookingController::class,'book'])->name('booking.submit');
+
+    // SSLCOMMERZ Start
+Route::get('/example1', [SslCommerzPaymentController::class, 'exampleEasyCheckout']);
+Route::get('/example2', [SslCommerzPaymentController::class, 'exampleHostedCheckout']);
+
+Route::post('/pay', [SslCommerzPaymentController::class, 'index']);
+Route::post('/pay-via-ajax', [SslCommerzPaymentController::class, 'payViaAjax']);
+
+Route::post('/success', [SslCommerzPaymentController::class, 'success']);
+Route::post('/fail', [SslCommerzPaymentController::class, 'fail']);
+Route::post('/cancel', [SslCommerzPaymentController::class, 'cancel']);
+
+Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
+//SSLCOMMERZ END
+
     Route::get('booking_confirm/{id}',[FrontendBookingController::class,'book_confirm'])->name('Booking_Confirm');
     Route::get('booking_cancel/{id}',[FrontendBookingController::class,'book_cancel'])->name('Booking_Cancel');
     
@@ -101,7 +116,7 @@ Route::group(['middleware'=>'auth'], function () {
    
     Route::get('/customer/list', [CustomerController::class, 'list'])->name('customer.list');
     Route::get('/customer/form', [CustomerController::class, 'createform'])->name('customer.form');
-   Route::post('/customer/store', [CustomerController::class, 'store'])->name('customer.store');
+    Route::post('/customer/store', [CustomerController::class, 'store'])->name('customer.store');
 
     Route::get('/user/list',[UserController::class,'list'])->name('user.list');
     Route::get('/user/form',[UserController::class,'createform'])->name('user.form');

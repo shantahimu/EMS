@@ -10,8 +10,8 @@
                         <div class="card-title mb-4">
                             <div class="d-flex justify-content-start">
                                 <div class="image-container">
-                                    <img src="http://placehold.it/150x150" id="imgProfile" style="width: 150px; height: 150px"
-                                        class="img-thumbnail" />
+                                    <img src="{{ url('uploads/', auth()->user()->image) }}" id="imgProfile"
+                                        style="width: 150px; height: 150px" class="img-thumbnail" />
                                     <div class="middle">
                                         <form action="{{ route('profile.edit', auth()->user()->id) }}"method='get'
                                             enctype="multipart/form-data>>
@@ -56,14 +56,6 @@
                                         </div>
                                         <hr />
 
-                                        <div class="row">
-                                            <div class="col-sm-3 col-md-2 col-5">
-                                                <label style="font-weight:bold;">Birth Date</label>
-                                            </div>
-                                            <div class="col-md-8 col-6">
-                                                March 22, 1994.
-                                            </div>
-                                        </div>
                                         <hr />
 
 
@@ -116,17 +108,18 @@
                     <tr>
                         <th scope="row">{{ $key + 1 }}</th>
                         <td>{{ $singleBooking->created_at }}</td>
-                        <td>{{ $singleBooking->event->event_name}}</td>
+                        <td>{{ $singleBooking->event->event_name }}</td>
                         <td>{{ $singleBooking->price }}</td>
                         <td>{{ $singleBooking->status }}</td>
                         <td>
-                            @if($singleBooking->status=='pending')
-                            <a href="{{route('Booking_Confirm',$singleBooking->id)}}" type="button" class="btn btn-success">Confirm</a>
-                            <a href="{{route('Booking_Cancel',$singleBooking->id)}}" type="button" class="btn btn-danger">Cancel</a>
+                            @if ($singleBooking->status == 'processing')
+                                <a href="{{ route('Booking_Confirm', $singleBooking->id) }}" type="button" class="btn btn-success">Confirm</a>
+                                <a href="{{ route('Booking_Cancel', $singleBooking->id) }}" type="button" class="btn btn-danger">Cancel</a>
                             @endif
                         </td>
                     </tr>
                 @endforeach
+
             </tbody>
         </table>
     </div>

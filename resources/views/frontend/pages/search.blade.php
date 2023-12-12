@@ -1,5 +1,5 @@
 @extends('frontend.master')
-@section('content')
+@section('content') 
 
 <h2> Search result for:{{request()->search}} found {{$singleevent->count()}} event.</h2>
 
@@ -30,7 +30,7 @@
         </div>
         @endforeach
         @else 
-        <h1>No event found.</h1>
+        <h5>No such event has found.</h5>
         @endif
 
     </div>

@@ -24,7 +24,7 @@
       <th scope="row">{{$key+1}}</th>
      
       <td>{{$booking->user_id}}</td>
-      <td>{{$booking->singleevent_id}}</td>
+      <td>{{$booking->event->event_name}}</td>
       <td>{{$booking->guest}}</td>
       <td>{{$booking->location}}</td>
       <td>{{$booking->remarks}}</td>
@@ -32,10 +32,10 @@
       <td>{{$booking->price}}.BDT</td>
       <td class="col-3">
         <a class= "btn btn-success" href="{{route('update',$booking->id)}}">Update</a>
-        <a class= "btn btn-primary" href="">View</a>
-        
+        <a class= "btn btn-primary" href="">View</a>  
       </td>
     </tr>  
+
     
     @endforeach
       

@@ -26,14 +26,28 @@ class CustomerController extends Controller
         return view('frontend.pages.profileedit', compact('users'));
     }
     public function update(Request $request,$id){
+        // dd($request);
         $users=User::find($id);
+        if ($users) {
+            $fileName = $users->image;
+            if ($request->hasFile('image')) {
+                $file = $request->file('image');
+                $fileName = date('Ymdhis') . '.' . $file->getClientOriginalExtension();
+
+                $file->storeAs('/', $fileName);
+            }
         
         $users->update([
             'name'=>$request->name,
-            'email'=>$request->email            
+            'email'=>$request->email,
+            'image' => $fileName,
+        
+
         ]);
-        return redirect()->back();
-    }
+        notify()->success('Profile updated successfully.');
+        return redirect()->route('profile.view');
+        }
+     }  
 
     public function registrationstore(Request $request)
     {
@@ -48,12 +62,24 @@ class CustomerController extends Controller
             notify()->error('Invalid User & Password');
             return redirect()->back();
         }
+        $fileName=null;
+         
+        if($request->hasFile('image'))
+        {
+            $file=$request->file('image');
+            $fileName=date('Ymdhis').'.'.$file->getClientOriginalExtension();
+
+            $file->storeAs('/',$fileName);
+
+        }
+
 
         User::create([
             'name' => $request->name,
             'email' => $request->email,
             'role' => 'customer',
             'password' => bcrypt($request->password),
+            'image' => $fileName,
         ]);
 
         notify()->success('Customer Registration successful. Please login.');

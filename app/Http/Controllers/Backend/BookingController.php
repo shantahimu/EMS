@@ -11,7 +11,8 @@ class BookingController extends Controller
     public function list()
     {
         // dd('hcjsv');
-        $bookings = Booking::all();
+        $bookings = Booking::with('event')->get();
+        // dd($bookings);
         return view('admin.pages.booking.list', compact('bookings'));
     }
     
@@ -31,9 +32,9 @@ class BookingController extends Controller
         // dd($booking);
         $booking->update([
             'price'=>$request->price,
+            'status'=>'processing',
         ]);
         return redirect()->route('booking.list');
-        
     }
     
     
