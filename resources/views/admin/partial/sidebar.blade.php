@@ -5,14 +5,18 @@
  
             Dashboard
         </a>
+        <a class="nav-link" href="#">
+            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+            About Me
+        </a>
         <a class="nav-link" href="{{route('user.list')}}">
             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
             Users
         </a>
-        <a class="nav-link" href="{{route('role.list')}}">
+        {{-- <a class="nav-link" href="{{route('role.list')}}">
             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
             Role  
-        </a>
+        </a> --}}
         <a class="nav-link" href="{{route('customer.list')}}">
             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
             Customer 
@@ -27,10 +31,10 @@
             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
             Service  
         </a>  
-        <a class="nav-link" href="{{route('package.list')}}">
+        {{-- <a class="nav-link" href="{{route('package.list')}}">
             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
             Package 
-        </a> 
+        </a>  --}}
         <a class="nav-link" href="{{route('booking.list')}}">
             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
             Booking
@@ -39,10 +43,10 @@
             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
             Feed Back
         </a>  
-        <a class="nav-link" href="{{url('/rating/list')}}">
+        {{-- <a class="nav-link" href="{{url('/rating/list')}}">
             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
             Rating
-        </a>
+        </a> --}}
         
         <a class="nav-link" href="{{url('/aboutus')}}">
             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>

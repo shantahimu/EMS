@@ -11,8 +11,6 @@ use App\Library\SslCommerz\SslCommerzNotification;
 
 class BookingController extends Controller
 {
-
-
     public function book(Request $request)
     {
         //   dd($request);
@@ -22,36 +20,34 @@ class BookingController extends Controller
             'guest' => $request->guest,
             'location' => $request->location,
             'remarks' => $request->remarks,
-            'status' => 'pending'
+            'status' => 'pending',
+            'transaction_id' => date('YmdHis'),
+            'payment_status' => 'pending'
 
         ]);
         return redirect()->route('profile.view');
     }
-
-
-
     public function book_confirm(Request $request, $id)
     {
-        $booking=Booking::find($id);
-        // dd($booking);
-        $booking->update([
-            'status'=>'Confirm',
-        ]);
+        $booking = Booking::find($id);
+        //  dd($booking);
+
         $this->payment($booking);
         return redirect()->route('profile.view');
     }
-      
 
-    public function payment($payment){
-    // dd($payment);
-    $post_data = array();
-        $post_data['total_amount'] = $payment->price; # You cant not pay less than 10
+
+    public function payment($payment)
+    {
+        //  dd($payment);
+        $post_data = array();
+        $post_data['total_amount'] = (int)$payment->price; # You cant not pay less than 10
         $post_data['currency'] = "BDT";
-        $post_data['tran_id'] = uniqid(); // tran_id must be unique
+        $post_data['tran_id'] = $payment->transaction_id; // tran_id must be unique
 
         # CUSTOMER INFORMATION
         $post_data['cus_name'] = $payment->user_id;
-        $post_data['cus_email'] = $payment->email;
+        $post_data['cus_email'] = 'a@gmail.com';
         $post_data['cus_add1'] = 'Customer Address';
         $post_data['cus_add2'] = "";
         $post_data['cus_city'] = "";
@@ -82,13 +78,13 @@ class BookingController extends Controller
         $post_data['value_c'] = "ref003";
         $post_data['value_d'] = "ref004";
 
-        // dd($post_data);
-        
+        //                                                                                                                               dd($post_data);
+
 
         $sslc = new SslCommerzNotification();
         # initiate(Transaction Data , false: Redirect to SSLCOMMERZ gateway/ true: Show all the Payement gateway here )
-        $payment_options = $sslc->makePayment($post_data, 'checkout', 'json');
-
+        $payment_options = $sslc->makePayment($post_data, 'hosted');
+        //dd($payment_options);
         if (!is_array($payment_options)) {
             print_r($payment_options);
             $payment_options = array();
@@ -98,10 +94,10 @@ class BookingController extends Controller
 
     public function book_cancel(Request $request, $id)
     {
-        $booking=Booking::find($id);
-         // dd($booking);
+        $booking = Booking::find($id);
+        // dd($booking);
         $booking->update([
-            'status'=>'Cancel',
+            'status' => 'Cancel',
         ]);
 
         return redirect()->route('profile.view');

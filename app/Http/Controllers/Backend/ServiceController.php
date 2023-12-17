@@ -54,9 +54,6 @@ class ServiceController extends Controller
             notify()->success('Service updated successfully.');
             return redirect()->route('service.list');
         }
-        
-        
-    
     
     public function form(){
         return view('admin.pages.service.form');

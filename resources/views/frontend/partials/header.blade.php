@@ -14,7 +14,6 @@
       <nav id="navbar" class="col-8 navbar">
         <ul>
           <li><a href="{{route('frontendhome')}}">Home</a></li>
-          <li class="dropdown"><a href="#"><span>Package</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
               <li class="dropdown"><a href="#"><span>Events</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
                 <ul>
@@ -24,6 +23,7 @@
                 </ul> 
               </li>
             </ul>
+            {{-- <li class="dropdown"><a href="#"><span>Package</span></a> --}}
           </li>
           <li><a href="{{route('user.contact')}}">Contact Us</a></li>
           <li><a href="#">About Us</a></li>

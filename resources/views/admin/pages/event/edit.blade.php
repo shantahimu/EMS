@@ -49,7 +49,7 @@
           </label>
         </div>
       </div>
-      <button type="submit" class="btn btn-info bg-info text-dark">Submit</button>
+      <button type="submit" class="btn btn-info bg-info text-dark">Update</button>
     </form>
   </div>
 </div>

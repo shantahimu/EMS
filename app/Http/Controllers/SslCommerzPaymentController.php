@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Library\SslCommerz\SslCommerzNotification;
+use App\Models\Booking;
 
 class SslCommerzPaymentController extends Controller
 {
@@ -161,7 +162,8 @@ class SslCommerzPaymentController extends Controller
 
     public function success(Request $request)
     {
-        echo "Transaction is Successful";
+        // dd($request->all());
+        
 
         $tran_id = $request->input('tran_id');
         $amount = $request->input('amount');
@@ -170,11 +172,9 @@ class SslCommerzPaymentController extends Controller
         $sslc = new SslCommerzNotification();
 
         #Check order status in order tabel against the transaction id or order id.
-        $order_details = DB::table('orders')
-            ->where('transaction_id', $tran_id)
-            ->select('transaction_id', 'status', 'currency', 'amount')->first();
+        $order_details = Booking::where('transaction_id', $tran_id)->first();
 
-        if ($order_details->status == 'Pending') {
+        if ($order_details->status == 'processing') {
             $validation = $sslc->orderValidate($request->all(), $tran_id, $amount, $currency);
 
             if ($validation) {
@@ -183,11 +183,13 @@ class SslCommerzPaymentController extends Controller
                 in order table as Processing or Complete.
                 Here you can also sent sms or email for successfull transaction to customer
                 */
-                $update_product = DB::table('orders')
-                    ->where('transaction_id', $tran_id)
-                    ->update(['status' => 'Processing']);
+                $order_details->update([
+                    'payment_status'=>$request->status,
+                    'status'=>'confirm',
 
-                echo "<br >Transaction is successfully Completed";
+                ]);
+            notify()->success('Payment Success');
+                return redirect()->back();
             }
         } else if ($order_details->status == 'Processing' || $order_details->status == 'Complete') {
             /*

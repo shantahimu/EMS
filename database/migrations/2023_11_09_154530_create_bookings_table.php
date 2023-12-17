@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('remarks');
             $table->string('status');
             $table->string('price')->nullable();
+            $table->string('transaction_id')->unique();
+            $table->string('payment_status')->nullable();
             $table->timestamps();
         });
     }

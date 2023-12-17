@@ -24,8 +24,6 @@
         <label for="inputAddress">Service Price</label>
         <input value="{{ $services->service_price}}" name="service_price" type="text" class="form-control" id="inputAddress" placeholder="">
     </div>
-
-    </div>
 </form>
 
 @endsection

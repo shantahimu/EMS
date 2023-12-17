@@ -14,7 +14,7 @@
                                         style="width: 150px; height: 150px" class="img-thumbnail" />
                                     <div class="middle">
                                         <form action="{{ route('profile.edit', auth()->user()->id) }}"method='get'
-                                            enctype="multipart/form-data>>
+                                            enctype="multipart/form-data">
                                             @csrf
                                         <button type="edit"
                                             class="btn btn-info bg-info text-dark">Edit</button>

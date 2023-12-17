@@ -9,7 +9,7 @@ class DashboardController extends Controller
 {
     public function  dashboard(){
         // dd('Hello Dashboard');
-        return view('admin.master');
+        return view('admin.pages.dashboard.dashboard');
     }
     
 }
