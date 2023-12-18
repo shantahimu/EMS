@@ -26,6 +26,27 @@
                 @enderror
           </div>
           <div class="form-group 2">
+            <label for="inputContactNumber">Appointment Date</label>
+            <input name="appointment_date" type="text" class="form-control" id="event_price" placeholder="event_price" required>
+            @error('appointment_date')
+                <div class ="alert alert-danger">{{$message}}</div>
+                @enderror
+          </div>
+          <div class="form-group 2">
+            <label for="inputContactNumber">Event Starting Date</label>
+            <input name="start_date" type="text" class="form-control" id="event_price" placeholder="event_price" required>
+            @error('start_date')
+                <div class ="alert alert-danger">{{$message}}</div>
+                @enderror
+          </div>
+          <div class="form-group 2">
+            <label for="inputContactNumber">Event Ending Date</label>
+            <input name="end_date" type="text" class="form-control" id="event_price" placeholder="event_price" required>
+            @error('end_date')
+                <div class ="alert alert-danger">{{$message}}</div>
+                @enderror
+          </div>
+          <div class="form-group 2">
             <label for="inputContactNumber">Location</label>
             <input name="location" type="text" class="form-control" id="event_price" placeholder="event_price" required>
             @error('location')

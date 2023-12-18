@@ -16,6 +16,9 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained();
             $table->foreignId('event_id')->constrained();
             $table->string('guest');
+            $table->string('appointment_date');
+            $table->string('start_date');
+            $table->string('end_date');
             $table->string('location');
             $table->string('remarks');
             $table->string('status');

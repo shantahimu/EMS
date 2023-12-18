@@ -15,6 +15,9 @@
             <th scope="col">User ID</th>
             <th scope="col">Event</th>
             <th scope="col">Guest</th>
+            <th scope="col">Appointment Date</th>
+            <th scope="col">Event Starting Date</th>
+            <th scope="col">Event Ending Date</th>
             <th scope="col">Location</th>
             <th scope="col">Remarks</th>
             <th scope="col">Status</th>
@@ -29,6 +32,9 @@
                 <td>{{ $booking->user_id }}</td>
                 <td>{{ $booking->event->event_name }}</td>
                 <td>{{ $booking->guest }}</td>
+                <td>{{ $booking->appointment_date }}</td>
+                <td>{{ $booking->start_date }}</td>
+                <td>{{ $booking->end_date }}</td>
                 <td>{{ $booking->location }}</td>
                 <td>{{ $booking->remarks }}</td>
                 <td>{{ $booking->status }}</td>
