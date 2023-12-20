@@ -18,6 +18,7 @@ class PackageController extends Controller
     }    
 
     public function search(Request $request){
+        // dd($request);
         if ($request->search){
             $singleevent=Event::where('event_name','LIKE','%'.$request->search.'%')->get();
         }

@@ -3,10 +3,10 @@
 @section('content')
 
 
-<h1>Create new User</h1>
+<h4>Create new User</h4>
 
 
-<form action="{{route('user.store')}}" method="post" enctype="multipart/form-data">++
+<form action="{{route('user.store')}}" method="post" enctype="multipart/form-data">
 
         @if(session()->has('myError'))
         <p class="alert alert-danger">{{session()->get('myError')}}</p>
@@ -26,14 +26,14 @@
 
   </div>
 
+ 
   <div class="form-group">
     <label for="">Select Role:</label>
-   <select required class="form-control" name="role" id="">
-        <!-- <option value="">Admin</option> -->
-        <option value="manager">Manager</option>
-        <option value="receptionist">Receptionist</option>
-   </select>
+    <input required type="text" class="form-control" id="" placeholder="Enter name" name="role">
   </div>
+  @error('role')
+  <div class="alert alert-danger">{{ $message }}</div>
+  @enderror
 
 
 
@@ -43,6 +43,17 @@
     <input required type="email" class="form-control" placeholder="Enter Email" name="user_email">
     
     @error('user_email')
+    <div class="alert alert-danger">{{ $message }}</div>
+    @enderror
+    
+  </div>
+
+
+  <div class="form-group">
+    <label for="">Enter Phone: </label>
+    <input required type="number" class="form-control" placeholder="Enter Phone" name="phone">
+    
+    @error('phone')
     <div class="alert alert-danger">{{ $message }}</div>
     @enderror
     

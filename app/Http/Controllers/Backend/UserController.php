@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Models\Admin;
 use notify;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -26,23 +27,19 @@ class UserController extends Controller
         );
 
         if ($validate->fails()) {
-            // message
+           
             return redirect()->back()->withErrors($validate);
         }
 
-        $credentials = $request->except('_token');
-        
-        $login = auth()->attempt($credentials);
+        $credentials = $request->only('email', 'password'); 
+        //  dd($credentials);
+        $login=auth()->guard('admin')->attempt($credentials);
         if ($login) {
             return redirect()->route('home');
         }
         notify()->success('Logged in sucessfully');
         return redirect()->back()->with('message', 'Invalid user email or password');
     }
-
-    // public function profile(){
-    //     return view ('admin.pages.admin_profile.profile');
-    // }
 
     public function logout()
     {
@@ -54,7 +51,7 @@ class UserController extends Controller
 
     public function list()
     {
-        $users = User::all();
+        $users = Admin::all();
         return view('admin.pages.user.list', compact('users'));
     }
 
@@ -86,9 +83,10 @@ class UserController extends Controller
         }
 
 
-        User::create([
+        Admin::create([
             'name' => $request->user_name,
             'role' => $request->role,
+            'phone'=>$request->phone,
             'image' => $fileName,
             'email' => $request->user_email,
             'password' => bcrypt($request->user_password),
@@ -96,4 +94,5 @@ class UserController extends Controller
 
         return redirect()->route('user.list')->with('message', 'User created successfully.');
     }
+      
 }

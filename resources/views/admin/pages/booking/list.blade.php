@@ -22,6 +22,8 @@
             <th scope="col">Remarks</th>
             <th scope="col">Status</th>
             <th scope="col">Price</th>
+            <th scope="col">Payment Status</th>
+            <th scope="col">Transaction ID</th>
             <th scope="col">Action</th>
         </tr>
     </thead>
@@ -39,9 +41,11 @@
                 <td>{{ $booking->remarks }}</td>
                 <td>{{ $booking->status }}</td>
                 <td>{{ $booking->price }}.BDT</td>
+                <td>{{ $booking->payment_status}}</td>
+                <td>{{ $booking->transaction_id}}</td>
                 <td class="col-3">
                     <a class="btn btn-success" href="{{ route('update', $booking->id) }}">Update</a>
-                    <a class="btn btn-primary" href="#">View</a>
+                    <a class="btn btn-primary" href="{{route('booking.details')}}">Details</a>
                 </td>
             </tr>
         @endforeach

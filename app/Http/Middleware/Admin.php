@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class CheckAdmin
+class Admin
 {
     /**
      * Handle an incoming request.
@@ -15,10 +15,11 @@ class CheckAdmin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(auth()->user()->role=='admin'){
+        if(auth()->guard('admin')->check()){
             return $next($request);
         }
-        notify()->error('Access Denied');
-        return redirect()->route('frontendhome');
+        notify()->error('Invalid Email or Password');
+        return redirect()->route('admin.login');
+        
     }
 }

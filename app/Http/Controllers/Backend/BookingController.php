@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Booking;
+use App\Models\Booking_Detail;
 use Illuminate\Http\Request;
 
 class BookingController extends Controller
@@ -19,7 +20,10 @@ class BookingController extends Controller
     public function createform(){
         return view('admin.pages.event.form');
     }
-    
+    public function details(){
+        $booking_details=Booking_Detail::with('service')->get();
+        return view('admin.pages.booking.details',compact('booking_details'));
+    }
     public function update($id)
     {
         $booking = Booking::find($id);

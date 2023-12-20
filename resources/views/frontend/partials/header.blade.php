@@ -26,7 +26,7 @@
             {{-- <li class="dropdown"><a href="#"><span>Package</span></a> --}}
           </li>
           <li><a href="{{route('user.contact')}}">Contact Us</a></li>
-          <li><a href="#">About Us</a></li>
+          <li><a href="#about">About Us</a></li>
           <form action="{{route('search')}}"method=get>
             <div class="input-group">
               <input name="search" type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
@@ -45,7 +45,7 @@
 
                 @auth
                 <a href="{{ route('customer.logout') }}">Logout</a>
-                <a href="{{route('profile.view')}}"><i class="bi bi-people-fill"></i> {{auth()->user()->name}}</a>
+                <a href="{{route('user.profile.view')}}"><i class="bi bi-people-fill"></i> {{auth()->user()->name}}</a>
 
                 @endauth
     </div>

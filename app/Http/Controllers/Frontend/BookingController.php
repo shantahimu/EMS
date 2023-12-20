@@ -8,19 +8,20 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Library\SslCommerz\SslCommerzNotification;
+use App\Models\Booking_Detail;
 
 class BookingController extends Controller
 {
     public function book(Request $request)
     {
-        //   dd($request);
-        Booking::create([
+        // dd($request);
+        $booking = Booking::create([
             'user_id' => auth()->user()->id,
             'event_id' => $request->event_name,
             'guest' => $request->guest,
-            'appointment_date'=>$request->apponitment_date,
-            'start_date'=>$request->start_date,
-            'end_date'=>$request->end_date,
+            'appointment_date' => $request->apponitment_date,
+            'start_date' => $request->start_date,
+            'end_date' => $request->end_date,
             'location' => $request->location,
             'remarks' => $request->remarks,
             'status' => 'pending',
@@ -28,7 +29,16 @@ class BookingController extends Controller
             'payment_status' => 'pending'
 
         ]);
-        return redirect()->route('profile.view');
+        $service=$request->services;
+        // dd($service);
+        foreach ($service as $item)
+        // dd($item);
+            Booking_Detail::create([
+                'booking_id' => $booking->id,
+                'service_id' => $item,
+                'event_id' => $request->event_name,
+            ]);
+        return redirect()->route('user.profile.view');
     }
     public function book_confirm(Request $request, $id)
     {
@@ -36,7 +46,7 @@ class BookingController extends Controller
         //  dd($booking);
 
         $this->payment($booking);
-        return redirect()->route('profile.view');
+        return redirect()->route('user.profile.view');
     }
 
 
@@ -103,6 +113,6 @@ class BookingController extends Controller
             'status' => 'Cancel',
         ]);
 
-        return redirect()->route('profile.view');
+        return redirect()->route('user.profile.view');
     }
 }
