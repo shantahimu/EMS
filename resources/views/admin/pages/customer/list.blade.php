@@ -13,9 +13,6 @@
         <th scope="col">Image</th>
         <th scope="col">E-mail</th>
         <th scope="col">Action</th>
-        {{-- <th scope="col">Address</th>
-        <th scope="col">Contact No</th> --}}
-        
       </tr>
     </thead>
     <tbody>

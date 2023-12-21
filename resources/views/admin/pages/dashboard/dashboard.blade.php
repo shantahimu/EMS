@@ -1,82 +1,78 @@
 @extends('admin.master')
 
 @section('content')
-<div class="container">
-    <div class="row">
-
         <!-- to count the number of  student -->
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-primary shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                No of Customers</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+
+        <div class="row">
+            {{-- <div class="col-md-4 d-flex">
+                <div class="card flex-fill">
+                    <div class="card-body py-4">
+                        <div class="d-flex align-items-start">
+                            <div class="flex-grow-1">
+                                <h3 class="mb-2">{{$users->count()}}</h3>
+                                <p class="mb-2">Total Number of Customers</p>
+                                <div class="mb-0">
+                                </div>
+                            </div>
+                            <div class="d-inline-block ms-3">
+                                <div class="stat">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-dollar-sign align-middle text-success">
+                                        <line x1="12" y1="1" x2="12" y2="23"></line>
+                                        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                                    </svg>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-auto">
-                            
-                            <i class="fas fa-chalkboard-user fa-2x text-gray-500"></i>
+                    </div>
+                </div>
+            </div> --}}
+        
+            <div class="col-md-4 d-flex">
+                <div class="card flex-fill">
+                    <div class="card-body py-4">
+                        <div class="d-flex align-items-start">
+                            <div class="flex-grow-1">
+                                <h3 class="mb-2 font-weight-bold">{{$events->count()}}</h3>
+                                <p class="mb-2"><strong>Total Number of Events</strong></p>
+                                <div class="mb-0"></div>
+                            </div>
+                            <div class="d-inline-block ms-3">
+                                <div class="stat">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home align-middle text-success">
+                                        <path d="M12 20V14M19 14v6M5 14v6M12 4l8-8-1.5-1.5L12 1 4.5 4.5 3 3z"></path>
+                                    </svg>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <!-- cont the number  of  teacher -->
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-success shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                No of Events</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fa-solid fa-user-graduate fa-2x text-gray-500"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- cont the number  of  subject -->
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-success shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                Total No of services</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fa-solid fa-book fa-2x text-gray-500"></i>
+            
+        
+            <div class="col-md-4 d-flex">
+                <div class="card flex-fill">
+                    <div class="card-body py-4">
+                        <div class="d-flex align-items-start">
+                            <div class="flex-grow-1">
+                                <h3 class="mb-2"><b>{{$services->count()}}</b></h3>
+                                <p class="mb-2"><b>Total Number of Services</b></p>
+                                <div class="mb-0">
+                                    <!-- <span class="badge badge-soft-success me-2"> +5.35% </span>
+                                    <span class="text-muted">Since last week</span> -->
+                                </div>
+                            </div>
+                            <div class="d-inline-block ms-3">
+                                <div class="stat">
+                                    <!-- House Icon SVG -->
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home align-middle text-success">
+                                        <path d="M12 20V10M19 16V20H5V16M12 20L12 10 12 20Z" />
+                                    </svg>
+                                    <!-- House Icon SVG -->
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>            
         </div>
-
-        {{-- count the number of class --}}
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-success shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                Total No of Booking</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fa-solid fa-chalkboard fa-2x text-gray-500"></i></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>    
-
 @endsection

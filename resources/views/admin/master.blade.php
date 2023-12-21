@@ -14,6 +14,13 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     @notifyCss
+    <style>
+      .notify{
+        z-index: 1000000;
+        position: absolute;
+        top: 8%;
+      }
+    </style>
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 </head>
 @include('notify::components.notify')
@@ -36,23 +43,22 @@
         </form>
         <!-- Navbar-->
         <div class="rowlist-inline-item">
-            <a href="#!" style="text-decoration: none;" class="row text-muted" data-bs-toggle="modal" data-bs-target="#userModal">
+            <a href="#!" style="text-decoration: none;" class="row text-muted" data-bs-toggle="modal"
+                data-bs-target="#userModal">
                 <div class="col-md-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" class="feather feather-user">
                         <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                         <circle cx="12" cy="7" r="4"></circle>
                     </svg>
                 </div>
                 <div class="col-md-10 p-0">
-                    {{auth()->guard('admin')->user()->name}}
+                    {{ auth()->guard('admin')->user()->name }}
                 </div>
             </a>
         </div>
-        <li><a class="dropdown-item" href="{{ route('admin.logout') }}">Logout</a>
-            <a href="{{ route('profile.view') }}"><i class="bi bi-people-fill"></i></a>
 
-
-        </li>
         </ul>
         </ul>
     </nav>
@@ -102,53 +108,64 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     <div class="row">
                         <div class="text-center rounded-5">
-                            <img style="border-radius: 10%; margin-left: 110px" height="150" width="150" src="{{ url('uploads/'.auth()->guard('admin')->user()->image) }}" alt="">
+                            <img style="border-radius: 10%; margin-left: 110px" height="150" width="150"
+                                src="{{ url('uploads/' .auth()->guard('admin')->user()->image) }}" alt="">
                             <div class="mt-2">
-                                <input type="button" class="btn btn-sm btn-primary" value="Change" terget="profilePicture" />
                                 <input type="file" style="display: none;" id="profilePicture" name="file" />
                             </div>
                         </div>
                     </div>
-    
+
                     <div class="modal-header border-primary">
-                        <h5 class="modal-title fs-3 fw-bold" id="userModalLabel">{{auth()->guard('admin')->user()->name}}</h5>
+                        <h5 class="modal-title fs-3 fw-bold" id="userModalLabel">
+                            {{ auth()->guard('admin')->user()->name }}</h5>
                     </div>
-    
+
                 </div>
-    
+
                 <div class="modal-body">
-    
+
                     <div class="row g-3">
                         <!-- col -->
                         <div class="col-12">
                             <div class="row">
                                 <div class="col-2">Role</div>
                                 <div class="col-1">:</div>
-                                <div class="col-8">{{auth()->guard('admin')->user()->role}}</div>
+                                <div class="col-8">{{ auth()->guard('admin')->user()->role }}</div>
                             </div>
                         </div>
-    
+
                         <div class="col-12">
                             <div class="row">
                                 <div class="col-2">Email</div>
                                 <div class="col-1">:</div>
-                                <div class="col-8">{{auth()->guard('admin')->user()->email}}</div>
+                                <div class="col-8">{{ auth()->guard('admin')->user()->email }}</div>
                             </div>
                         </div>
-    
+
                         <div class="col-12 pb-2">
                             <div class="row">
                                 <div class="col-2">Number</div>
                                 <div class="col-1">:</div>
-                                <div class="col-8">{{auth()->guard('admin')->user()->phone}}</div>
+                                <div class="col-8">{{ auth()->guard('admin')->user()->phone }}</div>
                             </div>
                         </div>
                     </div>
-    
                 </div>
+                <button type="button" class="btn btn-warning mb-3">
+                    <a class="nav-link" href="{{ route('admin.logout') }}">
+                        Log out
+                    </a>
+                </button>
+                <a href="{{ route('profile.view') }}"><i class="bi bi-people-fill"></i></a>
             </div>
         </div>
     </div>
+
+    <script src="https://getbootstrap.com/docs/5.2/examples/dashboard/dashboard.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    @stack('yourJsCode')
 </body>
+
 
 </html>
