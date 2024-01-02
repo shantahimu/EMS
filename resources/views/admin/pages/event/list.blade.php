@@ -27,8 +27,12 @@
       <td><img style="border-radius: 60px;" width="20%" src="{{url('uploads/',$event->event_image)}}" alt="image"></td>
       <td class="col-3">
         <a class= "btn btn-success" href="{{route('event.edit', $event->id)}}">Edit</a>
-        <a class= "btn btn-primary" href="{{route('event.view', $event->id)}}">View</a>
-        <a class= "btn btn-danger" href="{{route('event.delete', $event->id)}}">Delete</a>
+         <a class= "btn btn-primary" href="{{route('event.view', $event->id)}}">View</a> 
+        {{-- <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#eventDetailsModal{{ $event->id }}">
+                            View
+                        </button> --}}
+                        
+                        <a class= "btn btn-danger" href="{{route('event.delete', $event->id)}}">Delete</a> 
       </td>
     </tr>  
     

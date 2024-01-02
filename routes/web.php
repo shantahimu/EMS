@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\User;
+use App\Models\Contact;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\HomeController;
 use App\Http\Controllers\Backend\RoleController;
@@ -7,23 +9,23 @@ use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\EventController;
 use App\Http\Controllers\Backend\RatingController;
 use App\Http\Controllers\Backend\AboutUsController;
-use App\Http\Controllers\Backend\BookingController as BackendBookingController;
+use App\Http\Controllers\Backend\ContactController;
 use App\Http\Controllers\Backend\PackageController;
 use App\Http\Controllers\Backend\PaymentController;
 use App\Http\Controllers\Backend\ServiceController;
-use App\Http\Controllers\Backend\DashboardController;
-use App\Http\Controllers\Backend\CustomerController;
-use App\Http\Controllers\Frontend\CustomerController as FrontendCustomerController;
-use App\Http\Controllers\Frontend\HomeController as FrontendHomeController;
-use App\Http\Controllers\Frontend\AboutUsController as FrontendAboutUs;
-use App\Http\Controllers\Frontend\PackageController as FrontendPackageController;
-
-use App\Http\Controllers\Frontend\ContactusController as FrontendContactusController;
-use App\Http\Controllers\Frontend\BookingController as FrontendBookingController;
-
 use App\Http\Controllers\Frontend\MasterController;
+use App\Http\Controllers\Backend\CustomerController;
+use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\SslCommerzPaymentController;
-use App\Models\User;
+
+use App\Http\Controllers\Frontend\AboutUsController as FrontendAboutUs;
+use App\Http\Controllers\Frontend\HomeController as FrontendHomeController;
+
+use App\Http\Controllers\Backend\BookingController as BackendBookingController;
+use App\Http\Controllers\Frontend\BookingController as FrontendBookingController;
+use App\Http\Controllers\Frontend\PackageController as FrontendPackageController;
+use App\Http\Controllers\Frontend\CustomerController as FrontendCustomerController;
+use App\Http\Controllers\Frontend\ContactusController as FrontendContactusController;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,8 +56,6 @@ Route::get('/package', [FrontendPackageController::class, 'package'])->name('use
 Route::get('single-view/{id}', [FrontendPackageController::class, 'singleview'])->name('single.view');
 
 
-
-
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/user-profile', [FrontendCustomerController::class, 'profile'])->name('user.profile.view');
     Route::get('/profile/edit/{id}', [FrontendCustomerController::class, 'edit'])->name('profile.edit');
@@ -64,6 +64,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 
     Route::get('/contactus', [FrontendContactusController::class, 'contact'])->name('user.contact');
+    Route::post('contact/store',[FrontendContactusController::class,'store'])->name('contact.store');
 
     Route::post('booking-submit', [FrontendBookingController::class, 'book'])->name('booking.submit');
     Route::get('booking_confirm/{id}', [FrontendBookingController::class, 'book_confirm'])->name('Booking_Confirm');
@@ -105,6 +106,9 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/admin/logout', [UserController::class, 'logout'])->name('admin.logout');
 
         Route::get('/role/list', [RoleController::class, 'role'])->name('role.list');
+
+        
+    Route::get('/contact/list', [ContactController::class, 'contact'])->name('contact.list');
 
         Route::get('/event/list', [EventController::class, 'list'])->name('event.list');
         Route::get('/event/form', [EventController::class, 'createform'])->name('event.form');

@@ -8,6 +8,6 @@ use Illuminate\Routing\Controller;
 class HomeController extends Controller
 {
     public function home(){
-        return view('admin.master');
+        return view('admin.home');
     }
 }

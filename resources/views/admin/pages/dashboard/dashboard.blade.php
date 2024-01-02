@@ -9,7 +9,7 @@
                     <div class="card-body py-4">
                         <div class="d-flex align-items-start">
                             <div class="flex-grow-1">
-                                <h3 class="mb-2">{{$users->count()}}</h3>
+                                <h3 class="mb-2">{{$booking->count()}}</h3>
                                 <p class="mb-2">Total Number of Customers</p>
                                 <div class="mb-0">
                                 </div>
@@ -26,9 +26,8 @@
                     </div>
                 </div>
             </div> --}}
-        
             <div class="col-md-4 d-flex">
-                <div class="card flex-fill">
+                <div class="card flex-fill border-success">
                     <div class="card-body py-4">
                         <div class="d-flex align-items-start">
                             <div class="flex-grow-1">
@@ -38,8 +37,11 @@
                             </div>
                             <div class="d-inline-block ms-3">
                                 <div class="stat">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home align-middle text-success">
-                                        <path d="M12 20V14M19 14v6M5 14v6M12 4l8-8-1.5-1.5L12 1 4.5 4.5 3 3z"></path>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar align-middle">
+                                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                                        <line x1="3" y1="10" x2="21" y2="10"></line>
                                     </svg>
                                 </div>
                             </div>
@@ -48,9 +50,12 @@
                 </div>
             </div>
             
+            
+            
+            
         
             <div class="col-md-4 d-flex">
-                <div class="card flex-fill">
+                <div class="card flex-fill border-success">
                     <div class="card-body py-4">
                         <div class="d-flex align-items-start">
                             <div class="flex-grow-1">
@@ -63,16 +68,18 @@
                             </div>
                             <div class="d-inline-block ms-3">
                                 <div class="stat">
-                                    <!-- House Icon SVG -->
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home align-middle text-success">
-                                        <path d="M12 20V10M19 16V20H5V16M12 20L12 10 12 20Z" />
+                                    <!-- Heart Icon SVG -->
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart align-middle text-success">
+                                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21l8.84-8.83a5.5 5.5 0 0 0 0-7.78z"></path>
                                     </svg>
-                                    <!-- House Icon SVG -->
+                                    <!-- Heart Icon SVG -->
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>            
+            </div>
+            
+                      
         </div>
 @endsection

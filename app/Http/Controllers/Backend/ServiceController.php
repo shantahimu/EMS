@@ -46,7 +46,6 @@ class ServiceController extends Controller
         
             $services->update([
                 'services' => $request->service_name,
-                'description' => $request->description,
                 'service_price' => $request->service_price,
 
             ]);
@@ -72,7 +71,6 @@ class ServiceController extends Controller
 
         Service::create([
             'services' => $request->service_name,
-            'description' => $request->description,
             'service_price' => $request->service_price,
 
         ]);

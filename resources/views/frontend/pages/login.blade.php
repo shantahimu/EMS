@@ -1,33 +1,36 @@
 @extends('frontend.master')
 
-
 @section('content')
 
-<div class="container col-md-12 mt-5 pt-5 ">
-  
-  <div class="row  ">
-    <div class="col-md-3"></div>
-    <div class="col-md-6"> 
-    <form action="{{route('customer.do.login')}}" method="post">
-      @csrf
-      <div class="form-group">
-        <label for="exampleInputEmail1">Email address</label>
-        <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+<section class="vh-100" style="background-color: #ffffff;">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card shadow-2-strong" style="border-radius: 1rem; border-color: #007bff;">
+          <div class="card-body p-5 text-center">
+
+            <h3 class="mb-5">Sign in</h3>
+
+            <div class="form-outline mb-4">
+              <form action="{{route('customer.do.login')}}" method="post">
+                @csrf
+                <input type="email" name="email" id="typeEmailX-2" class="form-control form-control-lg" />
+                <label class="form-label" for="typeEmailX-2">Email</label>
+            </div>
+
+            <div class="form-outline mb-4">
+                <input type="password" name="password" id="typePasswordX-2" class="form-control form-control-lg" />
+                <label class="form-label" for="typePasswordX-2">Password</label>
+            </div>
+
+            <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
+            </form>
+
+          </div>
+        </div>
       </div>
-      <div class="form-group">
-        <label for="exampleInputPassword1">Password</label>
-        <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-      </div>
-      <div class="form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Check me out</label>
-      </div>
-      <button type="submit" class="btn btn-primary">Login</button>
-    </form>
     </div>
-    <div class="col-md-3"></div>
   </div>
-</div>
+</section>
 
 @endsection

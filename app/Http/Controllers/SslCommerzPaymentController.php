@@ -188,7 +188,7 @@ class SslCommerzPaymentController extends Controller
                     'status'=>'confirm',
 
                 ]);
-            notify()->success('Payment Successful');
+            notify()->success('Payment Successfull');
                 return redirect()->back();
             }
         } else if ($order_details->status == 'Processing' || $order_details->status == 'Complete') {

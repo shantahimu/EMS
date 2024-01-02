@@ -49,7 +49,7 @@
   </div>
 
 
-  <div class="form-group">
+  {{-- <div class="form-group">
     <label for="">Enter Phone: </label>
     <input required type="number" class="form-control" placeholder="Enter Phone" name="phone">
     
@@ -57,7 +57,7 @@
     <div class="alert alert-danger">{{ $message }}</div>
     @enderror
     
-  </div>
+  </div> --}}
 
 
 

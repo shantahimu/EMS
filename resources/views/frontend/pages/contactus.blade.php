@@ -1,10 +1,10 @@
 @extends('frontend.master')
+
 @section('content')
     <!doctype html>
     <html lang="en">
 
     <head>
-        <title>Contact Form 05</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link href="https://fonts.googleapis.com/css?family=Roboto:400,100,300,700" rel="stylesheet" type="text/css">
@@ -81,10 +81,11 @@
         <section class="ftco-section">
             <div class="container">
                 <div class="row justify-content-center">
-                    <div class="col-md-6 text-center mb-5">
-                        <h2 class="heading-section mt-5">Contact Form #05</h2>
+                    <div class="col-md-6 text-center mb-5 mt-5">
                     </div>
                 </div>
+                <form action="{{route('contact.store')}}"  method="post">
+                    @csrf
                 <div class="row justify-content-center">
                     <div class="col-md-12">
                         <div class="wrapper">
@@ -95,24 +96,20 @@
                                         <p class="mb-4">We're open for any suggestion or just to have a chat</p>
                                         <div id="form-message-warning" class="mb-4"></div>
                                         <div id="form-message-success" class="mb-4">
-                                            Your message was sent, thank you!
+                                          
                                         </div>
                                         <div class="row mb-4">
                                             <div class="col-md-4">
                                                 <div class="dbox w-100 d-flex align-items-start">
                                                     <div class="text">
-                                                        <p><span>Address:</span> 198 West 21th Street, Suite 721 New York NY
-                                                            10016</p>
+                                                        <p><span>Address:</span>Uttara sector-11, Dhaka, Bangladesh</p>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="dbox w-100 d-flex align-items-start">
                                                     <div class="text">
-                                                        <p><span>Email:</span> <a
-                                                                href="/cdn-cgi/l/email-protection#6900070f062910061c1b1a001d0c470a0604"><span
-                                                                    class="__cf_email__"
-                                                                    data-cfemail="026b6c646d427b6d7770716b76672c616d6f">[email&#160;protected]</span></a>
+                                                        <p><span>Email:</span> <a href="/cdn-cgi/l/email-protection#6900070f062910061c1b1a001d0c470a0604"><span class="__cf_email__" data-cfemail="026b6c646d427b6d7770716b76672c616d6f">[shantaisalam@gmail.com]</span></a>
                                                         </p>
                                                     </div>
                                                 </div>
@@ -120,7 +117,7 @@
                                             <div class="col-md-4">
                                                 <div class="dbox w-100 d-flex align-items-start">
                                                     <div class="text">
-                                                        <p><span>Phone:</span> <a href="tel://1234567920">+ 1235 2355 98</a>
+                                                        <p><span>Phone:</span> <a href="tel://1234567920">01635746591</a>
                                                         </p>
                                                     </div>
                                                 </div>
@@ -129,57 +126,59 @@
                                         <form method="POST" id="contactForm" name="contactForm" class="contactForm">
                                             <div class="row">
                                                 <div class="col-md-12">
-                                                    <div class="form-group">
+                                                    <div class="form-group mb-4">
                                                         <input type="text" class="form-control" name="name"
                                                             id="name" placeholder="Name">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12">
-                                                    <div class="form-group">
+                                                    <div class="form-group mb-4">
                                                         <input type="email" class="form-control" name="email"
                                                             id="email" placeholder="Email">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12">
-                                                    <div class="form-group">
+                                                    <div class="form-group mb-4">
                                                         <input type="text" class="form-control" name="subject"
                                                             id="subject" placeholder="Subject">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12">
-                                                    <div class="form-group">
+                                                    <div class="form-group mb-4">
                                                         <textarea name="message" class="form-control" id="message" cols="30" rows="4"
                                                             placeholder="Create a message here"></textarea>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12">
-                                                    <div class="form-group">
-                                                        <input type="submit" value="Send Message" class="btn btn-primary">
-                                                        <div class="submitting"></div>
+                                                    <div class="form-group"> 
+                                                        <button type="submit" class="btn btn-primary py-3 px-4">Send Message</button>
+    
                                                     </div>
                                                 </div>
                                             </div>
                                         </form>
                                         <div class="w-100 social-media mt-5">
-                                            <h3>Follow us here</h3>
+                                            {{-- <h3>Follow us here</h3>
                                             <p>
                                                 <a href="#">Facebook</a>
                                                 <a href="#">Twitter</a>
                                                 <a href="#">Instagram</a>
                                                 <a href="#">Dribbble</a>
-                                            </p>
+                                            </p> --}}
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 d-flex align-items-stretch">
                                     <div class="info-wrap w-100 p-5 img">
-                                        <img src="https://preview.colorlib.com/theme/bootstrap/contact-form-05/images/img.jpg" alt="">
+                                        <img src="https://img.freepik.com/free-photo/celebration-hall-with-full-guests_8353-10399.jpg?w=1060&t=st=1703614254~exp=1703614854~hmac=9b3a1fe071a925c06078a41e4b3deeca9c1e49ecd28cb194c62c084b9307d04f"
+                                            alt="">
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </form>
             </div>
         </section>
         <script data-cfasync="false"

@@ -15,7 +15,7 @@
         <ul>
           <li><a href="{{route('frontendhome')}}">Home</a></li>
             <ul>
-              <li class="dropdown"><a href="#"><span>Events</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+              <li class="dropdown"><a href="#event"><span>Events</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
                 <ul>
                   @foreach($events as $event)
                   <li><a href="{{route('single.view', $event->id)}}">{{$event->event_name}}</a></li>

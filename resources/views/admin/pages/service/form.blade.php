@@ -11,10 +11,6 @@
             @enderror
         </div>
         <div class="form-group">
-            <label for="inputAddress">Description</label>
-            <input name="description" type="text" class="form-control" id="inputAddress" placeholder="">
-        </div>
-        <div class="form-group">
             <label for="inputAddress">Service Price</label>
             <input name="service_price" type="number" class="form-control" id="inputAddress" placeholder="">
         </div>

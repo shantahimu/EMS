@@ -51,7 +51,7 @@ class UserController extends Controller
 
     public function list()
     {
-        $users = Admin::all();
+        $users = User::all();
         return view('admin.pages.user.list', compact('users'));
     }
 
@@ -83,10 +83,9 @@ class UserController extends Controller
         }
 
 
-        Admin::create([
+        User::create([
             'name' => $request->user_name,
             'role' => $request->role,
-            'phone'=>$request->phone,
             'image' => $fileName,
             'email' => $request->user_email,
             'password' => bcrypt($request->user_password),

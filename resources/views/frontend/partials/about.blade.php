@@ -4,7 +4,7 @@
       <div class="row gy-4 align-items-center">
           <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
               <div class="position-relative">
-                  <img src="https://th.bing.com/th/id/R.ee976b9bcd2b55071d51092a6325c0c0?rik=vZjdjLXaebrNCQ&pid=ImgRaw&r=0" class="img-fluid" alt="" style="max-width: 100%;">
+                  <img src="https://img.freepik.com/free-photo/sparkling-glassware-stands-long-table-prepared-wedding-di_8353-688.jpg?w=1060&t=st=1703613471~exp=1703614071~hmac=3d1dbfbfec603540669287478169ae9178441b166b81640de13ea0ed3485a814" class="img-fluid" alt="" style="max-width: 100%;">
               </div>
           </div>
           <div class="col-lg-6">
