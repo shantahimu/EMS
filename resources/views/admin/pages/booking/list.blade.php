@@ -10,15 +10,15 @@
     <div id="printDiv">
 
         <table class="table">
-            <thead>
+            <thead class="thead-dark">
                 <tr>
+                    <th scope="col">List</th>
                     <th scope="col">Booking ID</th>
                     <th scope="col">User ID</th>
                     <th scope="col">Event</th>
                     <th scope="col">Guest</th>
                     <th scope="col">Appointment Date</th>
-                    <th scope="col">Event Starting Date</th>
-                    <th scope="col">Event Ending Date</th>
+                    <th scope="col">Event Dates</th>
                     <th scope="col">Location</th>
                     <th scope="col">Remarks</th>
                     <th scope="col">Status</th>

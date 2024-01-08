@@ -116,8 +116,8 @@
             </div>
         </div>
 
-
-        <div class="col-md-4 d-flex">
+        
+        <div class="col-md-4 pt-4 d-flex">
             <div class="card flex-fill border-success">
                 <div class="card-body py-4">
                     <div class="d-flex align-items-start">
@@ -147,7 +147,7 @@
                 </div>
             </div>
         </div>
-
+    
 
     </div>
 @endsection

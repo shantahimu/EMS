@@ -1,14 +1,12 @@
 @extends('admin.master')
 
 @section('content')
-    <!-- Your existing HTML and form structure -->
-
-    <!-- View Button -->
+    
     <button type="button" class="btn-bg-info bg-info btn-primary" data-bs-toggle="modal" data-bs-target="#eventDetailsModal">
         View Event Details
     </button>
 
-    <!-- Modal -->
+   
     <div class="modal fade" id="eventDetailsModal" tabindex="-1" aria-labelledby="eventDetailsModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -51,16 +49,10 @@
                                     id="max_price" placeholder="Maximum event price" required>
                             </div>
                         </div>
-                        <!-- Additional form fields for event details can be added here -->
+                        
                     </form>
                 </div>
-                <!-- Modal footer if needed -->
-                <!--
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Save changes</button>
-          </div>
-          -->
+             
             </div>
         </div>
     </div>

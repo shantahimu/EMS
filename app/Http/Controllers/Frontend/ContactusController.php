@@ -22,7 +22,7 @@ class ContactusController extends Controller
             'subject'=>$request->subject,
             'message'=>$request->message,
            ]);
-        notify()->success('Message recieved. You will get email soon!');
+        notify()->success('Message recieved. You will get a mail soon!');
         return redirect()->route('frontendhome');
     }
 }

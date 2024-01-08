@@ -6,7 +6,7 @@
 
 
 <table class="table">
-    <thead>
+  <thead class="thead-dark">
       <tr>
         <th scope="col">Event ID</th>
         <th scope="col">Event Name</th>

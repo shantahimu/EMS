@@ -2,8 +2,9 @@
 
 @section('content')
 
-<h4>Our Services </h4>
+
 <a href= "{{route('service.form')}}"type ="button" class="btn btn-info bg-info text-dark">Add Service</a>
+
 <table class="table">
     <thead>
       <tr>
