@@ -31,14 +31,11 @@
             <div class="sb-nav-link-icon"><i class="far fa-calendar-check"></i></div>
             Booking
         </a> 
-        <a class="nav-link" href="{{url('/feedback/list')}}">
+        {{-- <a class="nav-link" href="{{url('/review/list')}}">
             <div class="sb-nav-link-icon"><i class="fas fa-comments"></i></div>
-            Feed Back
-        </a>  
-        <a class="nav-link" href="{{url('/rating/list')}}">
-            <div class="sb-nav-link-icon"><i class="fas fa-star"></i></div>
-            Rating
-        </a>
+            Review
+        </a>   --}}
+        
         
         
         <a class="nav-link" href="{{route('contact.list')}}">

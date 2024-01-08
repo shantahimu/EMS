@@ -16,31 +16,33 @@ class BookingController extends Controller
         // dd($bookings);
         return view('admin.pages.booking.list', compact('bookings'));
     }
-    
-    public function createform(){
+
+    public function createform()
+    {
         return view('admin.pages.event.form');
     }
-    public function details(){
-        $booking_details=Booking_Detail::with('service')->get();
-        return view('admin.pages.booking.details',compact('booking_details'));
+    public function details()
+    {
+        $booking_details = Booking_Detail::with('service')->get();
+        return view('admin.pages.booking.details', compact('booking_details'));
     }
     public function update($id)
     {
         $booking = Booking::find($id);
-        return view('admin.pages.booking.update', compact('booking'));
+       
 
+        return view('admin.pages.booking.update', compact('booking'));
     }
 
-    public function priceupdated(Request $request,$id){
-        $booking =Booking::find($id);
+    public function priceupdated(Request $request, $id)
+    {
+        $booking = Booking::find($id);
         // dd($booking);
         $booking->update([
-            'price'=>$request->price,
-            'status'=>'processing',
+            'price' => $request->price,
+            'status' => 'processing',
         ]);
+        notify()->success('Event total amount updated successfully.');
         return redirect()->route('booking.list');
     }
-    
-    
-
 }

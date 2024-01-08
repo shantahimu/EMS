@@ -12,4 +12,8 @@ class Event extends Model
     public function services(){
         return $this->belongsTo(Service::class, "service->id", "id");
     }
+    public function reviews()
+    {
+        return $this->belongsTo(Review::class, "review->id", "id");
+    }
 }

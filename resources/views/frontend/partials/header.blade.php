@@ -25,6 +25,7 @@
             </ul>
             {{-- <li class="dropdown"><a href="#"><span>Package</span></a> --}}
           </li>
+          {{-- <li><a href="{{route('review.show')}}">Review</a></li> --}}
           <li><a href="{{route('user.contact')}}">Contact Us</a></li>
           <li><a href="#about">About Us</a></li>
           <form action="{{route('search')}}"method=get>

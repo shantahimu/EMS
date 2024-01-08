@@ -16,8 +16,7 @@
                                         <form action="{{ route('profile.edit', auth()->user()->id) }}"method='get'
                                             enctype="multipart/form-data">
                                             @csrf
-                                        <button type="edit"
-                                            class="btn btn-info bg-info text-dark">Edit</button>
+                                        <button type="edit" class="btn btn-info bg-info text-dark">Edit</button>
                                     </div>
                                 </div>
                                 <div class="userData ml-3">
@@ -26,7 +25,7 @@
                                 </div>
                                 <div class="ml-auto">
                                     <input type="button" class="btn btn-primary d-none" id="btnDiscard"
-                                        value="Discard Changes" />
+                                        value="Discard Changes"/>
                                 </div>
                             </div>
                         </div>

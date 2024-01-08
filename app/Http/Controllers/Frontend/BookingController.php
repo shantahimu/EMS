@@ -5,40 +5,58 @@ namespace App\Http\Controllers\Frontend;
 use App\Models\Event;
 use App\Models\Booking;
 use Illuminate\Http\Request;
+use App\Models\Booking_Detail;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
 use App\Library\SslCommerz\SslCommerzNotification;
-use App\Models\Booking_Detail;
 
 class BookingController extends Controller
 {
     public function book(Request $request)
-    {
-        // dd($request);
-        $booking = Booking::create([
-            'user_id' => auth()->user()->id,
-            'event_id' => $request->event_name,
-            'guest' => $request->guest,
-            'appointment_date' => $request->apponitment_date,
-            'start_date' => $request->start_date,
-            'end_date' => $request->end_date,
-            'location' => $request->location,
-            'remarks' => $request->remarks,
-            'status' => 'pending',
-            'transaction_id' => date('YmdHis'),
-            'payment_status' => 'pending'
+    { {
+            $validator = Validator::make($request->all(), [
+                'event_name' => 'required',
+                'guest' => 'required|numeric',
+                'apponitment_date' => 'required|date',
+                'start_date' => 'required|date',
+                'end_date' => 'required|date',
+                'location' => 'required|string',
+                'remarks' => 'required|string',
 
-        ]);
-        $service=$request->services;
-        // dd($service);
-        foreach ($service as $item)
-        // dd($item);
-            Booking_Detail::create([
-                'booking_id' => $booking->id,
-                'service_id' => $item,
-                'event_id' => $request->event_name,
             ]);
-        return redirect()->route('user.profile.view');
+
+            if ($validator->fails()) {
+                return redirect()->back()->withErrors($validator)->withInput();
+            }
+            // dd($request);
+            $booking = Booking::create([
+                'user_id' => auth()->user()->id,
+                'event_id' => $request->event_name,
+                'guest' => $request->guest,
+                'appointment_date' => $request->apponitment_date,
+                'start_date' => $request->start_date,
+                'end_date' => $request->end_date,
+                'location' => $request->location,
+                'remarks' => $request->remarks,
+                'status' => 'pending',
+                'transaction_id' => date('YmdHis'),
+                'payment_status' => 'pending'
+
+
+            ]);
+            $service = $request->services;
+            // dd($service);
+            foreach ($service as $item)
+                // dd($item);
+                Booking_Detail::create([
+                    'booking_id' => $booking->id,
+                    'service_id' => $item,
+                    'event_id' => $request->event_name,
+                ]);
+                notify()->success('Event booked successfully.');
+            return redirect()->route('user.profile.view');
+        }
     }
     public function book_confirm(Request $request, $id)
     {
@@ -46,6 +64,8 @@ class BookingController extends Controller
         //  dd($booking);
 
         $this->payment($booking);
+        
+
         return redirect()->route('user.profile.view');
     }
 
@@ -112,6 +132,7 @@ class BookingController extends Controller
         $booking->update([
             'status' => 'Cancel',
         ]);
+        notify()->error('Event Booking cancelled');
 
         return redirect()->route('user.profile.view');
     }

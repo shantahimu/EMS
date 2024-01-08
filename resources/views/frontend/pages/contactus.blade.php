@@ -84,101 +84,112 @@
                     <div class="col-md-6 text-center mb-5 mt-5">
                     </div>
                 </div>
-                <form action="{{route('contact.store')}}"  method="post">
+                <form action="{{ route('contact.store') }}" method="post">
                     @csrf
-                <div class="row justify-content-center">
-                    <div class="col-md-12">
-                        <div class="wrapper">
-                            <div class="row no-gutters">
-                                <div class="col-lg-6">
-                                    <div class="contact-wrap w-100">
-                                        <h3>Contact us</h3>
-                                        <p class="mb-4">We're open for any suggestion or just to have a chat</p>
-                                        <div id="form-message-warning" class="mb-4"></div>
-                                        <div id="form-message-success" class="mb-4">
-                                          
-                                        </div>
-                                        <div class="row mb-4">
-                                            <div class="col-md-4">
-                                                <div class="dbox w-100 d-flex align-items-start">
-                                                    <div class="text">
-                                                        <p><span>Address:</span>Uttara sector-11, Dhaka, Bangladesh</p>
+                    <div class="row justify-content-center">
+                        <div class="col-md-12">
+                            <div class="wrapper">
+                                <div class="row no-gutters">
+                                    <div class="col-lg-6">
+                                        <div class="contact-wrap w-100">
+                                            <h3>Contact us</h3>
+                                            <p class="mb-4">We're open for any suggestion or just to have a chat</p>
+                                            <div id="form-message-warning" class="mb-4"></div>
+                                            <div id="form-message-success" class="mb-4">
+
+                                            </div>
+                                            <div class="row mb-4">
+                                                <div class="col-md-4">
+                                                    <div class="dbox w-100 d-flex align-items-start">
+                                                        <div class="text">
+                                                            <p><span>Address:</span>Uttara sector-11, Dhaka, Bangladesh</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="dbox w-100 d-flex align-items-start">
+                                                        <div class="text">
+                                                            <p><span>Email:</span> <a
+                                                                    href="/cdn-cgi/l/email-protection#6900070f062910061c1b1a001d0c470a0604"><span
+                                                                        class="__cf_email__"
+                                                                        data-cfemail="026b6c646d427b6d7770716b76672c616d6f">[shantaisalam@gmail.com]</span></a>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="dbox w-100 d-flex align-items-start">
+                                                        <div class="text">
+                                                            <p><span>Phone:</span> <a
+                                                                    href="tel://1234567920">01635746591</a>
+                                                            </p>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-4">
-                                                <div class="dbox w-100 d-flex align-items-start">
-                                                    <div class="text">
-                                                        <p><span>Email:</span> <a href="/cdn-cgi/l/email-protection#6900070f062910061c1b1a001d0c470a0604"><span class="__cf_email__" data-cfemail="026b6c646d427b6d7770716b76672c616d6f">[shantaisalam@gmail.com]</span></a>
-                                                        </p>
+                                            <form method="POST" id="contactForm" name="contactForm" class="contactForm">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group mb-4">
+                                                            <input type="text" class="form-control" name="name"
+                                                                id="name" placeholder="Name">
+                                                            @error('name')
+                                                                <div class ="alert alert-danger">{{ $message }}</div>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="form-group mb-4">
+                                                            <input type="email" class="form-control" name="email"
+                                                                id="email" placeholder="Email">
+                                                            @error('email')
+                                                                <div class ="alert alert-danger">{{ $message }}</div>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="form-group mb-4">
+                                                            <input type="text" class="form-control" name="subject"
+                                                                id="subject" placeholder="Subject">
+                                                            @error('subject')
+                                                                <div class ="alert alert-danger">{{ $message }}</div>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="form-group mb-4">
+                                                            <textarea name="message" class="form-control" id="message" cols="30" rows="4"
+                                                                placeholder="Create a message here"></textarea>
+                                                            @error('message')
+                                                                <div class ="alert alert-danger">{{ $message }}</div>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <button type="submit" class="btn btn-primary py-3 px-4">Send
+                                                                Message</button>
+
+                                                        </div>
                                                     </div>
                                                 </div>
+                                            </form>
+                                            <div class="w-100 social-media mt-5">
+
                                             </div>
-                                            <div class="col-md-4">
-                                                <div class="dbox w-100 d-flex align-items-start">
-                                                    <div class="text">
-                                                        <p><span>Phone:</span> <a href="tel://1234567920">01635746591</a>
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <form method="POST" id="contactForm" name="contactForm" class="contactForm">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <div class="form-group mb-4">
-                                                        <input type="text" class="form-control" name="name"
-                                                            id="name" placeholder="Name">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <div class="form-group mb-4">
-                                                        <input type="email" class="form-control" name="email"
-                                                            id="email" placeholder="Email">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <div class="form-group mb-4">
-                                                        <input type="text" class="form-control" name="subject"
-                                                            id="subject" placeholder="Subject">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <div class="form-group mb-4">
-                                                        <textarea name="message" class="form-control" id="message" cols="30" rows="4"
-                                                            placeholder="Create a message here"></textarea>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <div class="form-group"> 
-                                                        <button type="submit" class="btn btn-primary py-3 px-4">Send Message</button>
-    
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </form>
-                                        <div class="w-100 social-media mt-5">
-                                            {{-- <h3>Follow us here</h3>
-                                            <p>
-                                                <a href="#">Facebook</a>
-                                                <a href="#">Twitter</a>
-                                                <a href="#">Instagram</a>
-                                                <a href="#">Dribbble</a>
-                                            </p> --}}
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-lg-6 d-flex align-items-stretch">
-                                    <div class="info-wrap w-100 p-5 img">
-                                        <img src="https://img.freepik.com/free-photo/celebration-hall-with-full-guests_8353-10399.jpg?w=1060&t=st=1703614254~exp=1703614854~hmac=9b3a1fe071a925c06078a41e4b3deeca9c1e49ecd28cb194c62c084b9307d04f"
-                                            alt="">
+                                    <div class="col-lg-6 d-flex align-items-stretch">
+                                        <div class="info-wrap w-100 p-5 img">
+                                            <img src="https://img.freepik.com/free-photo/celebration-hall-with-full-guests_8353-10399.jpg?w=1060&t=st=1703614254~exp=1703614854~hmac=9b3a1fe071a925c06078a41e4b3deeca9c1e49ecd28cb194c62c084b9307d04f"
+                                                alt="">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </form>
+                </form>
             </div>
         </section>
         <script data-cfasync="false"

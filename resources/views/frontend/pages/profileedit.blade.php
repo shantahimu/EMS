@@ -4,7 +4,8 @@
         <div class="row">
             <div class="col-12">
                 <div class="card">
-                    <form action="{{ route('profile.update', auth()->user()->id) }}" value="image" method='post' enctype="multipart/form-data">
+                    <form action="{{ route('profile.update.view', auth()->user()->id) }}" value="image" method='post'
+                        enctype="multipart/form-data">
                         @csrf
                         @method('put')
                         <div class="card-body">
@@ -21,13 +22,14 @@
                                     <div class="userData ml-3">
                                         <h2 class="d-block" style="font-size: 1.5rem; font-weight: bold"><a
                                                 href="javascript:void(0);">{{ auth()->user()->name }}</a></h2>
+                                        
                                     </div>
                                     <div class="ml-auto">
                                         <input type="button" class="btn btn-primary d-none" id="btnDiscard"
                                             value="" />
                                     </div>
                                 </div>
-                            </div>+
+                            </div>
 
                             <div class="row">
                                 <div class="col-12">
@@ -50,6 +52,9 @@
                                                 </div>
                                                 <input name="name" class="col-md-8 col-6"
                                                     value="{{ auth()->user()->name }}">
+                                                    @if ($errors->has('name'))
+                                            <div class="text-danger">{{ $errors->first('name') }}</div>
+                                        @endif
                                             </div>
                                             <hr />
 
@@ -62,19 +67,22 @@
                                                 </div>
                                                 <input name="email" class="col-md-8 col-6"
                                                     value="{{ auth()->user()->email }}">
+                                                    @if ($errors->has('email'))
+                                            <div class="text-danger">{{ $errors->first('email') }}</div>
+                                        @endif
 
                                             </div>
                                         </div>
                                         <hr />
 
 
-                                        <div class="row">
+                                        {{-- <div class="row">
                                             <div class="col-sm-3 col-md-2 col-5">
                                                 <label style="font-weight:bold;">Role</label>
                                             </div>
                                             <input class="col-md-8 col-6" value="{{ auth()->user()->role }}">
 
-                                        </div>
+                                        </div> --}}
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="connectedServices" role="tabpanel"

@@ -22,7 +22,7 @@
                     <th scope="col">Location</th>
                     <th scope="col">Remarks</th>
                     <th scope="col">Status</th>
-                    <th scope="col">Price</th>
+                    <th scope="col">Total Amount</th>
                     <th scope="col">Payment Status</th>
                     <th scope="col">Transaction ID</th>
                     <th scope="col">Action</th>

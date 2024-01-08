@@ -17,7 +17,7 @@
                     <div class="mt-4">
                         <h3>{{ $singleevent->event_name }}</h3>
                         <p>{{ $singleevent->event_description }}</p>
-                        <p><strong>Price Range:</strong> {{ $singleevent->min_price }} - {{ $singleevent->max_price }} BDT</p>
+                        <p><strong>Price Range:</strong> {{ $singleevent->min_price }} - {{ $singleevent->max_price }} .BDT</p>
                     </div>
 
                     <h5>Select Services:</h5>
@@ -43,26 +43,41 @@
                     <label for="inputContactNumber">Appointment Date</label>
                     <input name="apponitment_date" type="date" class="form-control" id="event_price" placeholder=""
                         required>
+                        @error('appointment_date')
+                        <div class ="alert alert-danger">{{$message}}</div>
+                        @enderror
 
                 </div>
                 <div class="form-group 2">
                     <label for="inputContactNumber">Event Starting Date</label>
                     <input name="start_date" type="date" class="form-control" id="event_price" placeholder="" required>
+                    @error('start_date')
+                        <div class ="alert alert-danger">{{$message}}</div>
+                        @enderror
 
                 </div>
                 <div class="form-group 2">
                     <label for="inputContactNumber">Event Ending Date</label>
                     <input name="end_date" type="date" class="form-control" id="event_price" placeholder="" required>
+                    @error('end_date')
+                        <div class ="alert alert-danger">{{$message}}</div>
+                        @enderror
                 </div>
 
                 <div class="form-outline md-6" style="width: 22rem;">
                     <label class="form-label" for="form2">Location</label>
                     <input required name="location" value="" type="text" id="form2" class="form-control" />
+                    @error('location')
+                        <div class ="alert alert-danger">{{$message}}</div>
+                        @enderror
 
                 </div>
                 <div class="form-outline md-6" style="width: 22rem;">
                     <label class="form-label" for="form2">Remarks </label>
                     <input required name="remarks" value="" type="text" id="form2" class="form-control" />
+                    @error('remarks')
+                        <div class ="alert alert-danger">{{$message}}</div>
+                        @enderror
 
                 </div>
                 <div class="mt-4 text-align-center">
@@ -85,42 +100,36 @@
                 if (service_price !== 500) {
                     totalServicePrice += service_price;
                 } else {
-                    cateringServicePrice = 500; // Set catering service price
+                    cateringServicePrice = 500; 
                 }
             });
     
-            // Get the number of guests
             var guest = document.getElementById('guest').value;
     
-            // If guest number is provided, calculate the total price
+         
             if (guest !== '') {
                 guest = parseInt(guest);
     
-                // Calculate total price considering catering and guest count
+                
                 var calculated_price = totalServicePrice + (cateringServicePrice * guest);
                 
-                // Update calculated price
+             
                 document.getElementById('calculated_price').innerHTML = calculated_price;
             } else {
-                // If no guest number is provided, keep the calculated price empty or show a message
+                
                 document.getElementById('calculated_price').innerHTML = "Please input guest number.";
             }
         }
     
-        // Listen for checkbox changes and update the calculated price
         var checkboxes = document.querySelectorAll('input[name="services[]"]');
         checkboxes.forEach(function (checkbox) {
             checkbox.addEventListener('change', amount);
         });
     
-        // Listen for changes in the guest count
+     
         document.getElementById('guest').addEventListener('input', amount);
     </script>
-    
-    
        
-    
-    
     
     
 @endsection

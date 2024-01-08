@@ -17,13 +17,15 @@ class CustomerController extends Controller
     }
 
     public function profile(){
-        $booking=Booking::with('event')->where('user_id',auth()->user()->id)->get();
-        return view('frontend.pages.profile', compact('booking'));
+      
+    $booking = Booking::with('event')->where('user_id', auth()->user()->id)->get();
+    return view('frontend.pages.profile', compact('booking'));
     }
+
     public function edit($id)
     {
         $users = User::find($id);
-        return view('frontend.pages.profileedit', compact('users'));
+        return view('frontend.pages.profileedit', compact('users')); 
     }
     public function update(Request $request,$id){
         // dd($request);
@@ -45,7 +47,7 @@ class CustomerController extends Controller
 
         ]);
         notify()->success('Profile updated successfully.');
-        return redirect()->route('profile.view');
+        return redirect()->route('user.profile.view');
         }
      }  
 
@@ -111,7 +113,7 @@ class CustomerController extends Controller
         // dd($credentials);
 
         if (auth()->attempt($credentials)) {
-            notify()->success('Login Success.');
+            notify()->success('Login Successful.');
             return redirect()->route('frontendhome');
         }
 
@@ -123,7 +125,7 @@ class CustomerController extends Controller
     public function logout()
     {
         auth()->logout();
-        notify()->success('Logout Success.');    
+        notify()->success('Logout Successful.');    
         return redirect()->route('frontendhome');
     }
 }

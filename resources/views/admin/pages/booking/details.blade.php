@@ -10,8 +10,8 @@
         <tr>
             <th scope="col">ID</th>
             <th scope="col">Booking ID</th>
-            <th scope="col">Service ID</th>
-            <th scope="col">Event ID</th>
+            <th scope="col">Service </th>
+            <th scope="col">Event</th>
         </tr>
     </thead>
     <tbody>

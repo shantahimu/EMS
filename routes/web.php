@@ -20,12 +20,13 @@ use App\Http\Controllers\SslCommerzPaymentController;
 
 use App\Http\Controllers\Frontend\AboutUsController as FrontendAboutUs;
 use App\Http\Controllers\Frontend\HomeController as FrontendHomeController;
-
+use App\Http\Controllers\Frontend\ReviewController as FrontendReviewController;
 use App\Http\Controllers\Backend\BookingController as BackendBookingController;
 use App\Http\Controllers\Frontend\BookingController as FrontendBookingController;
 use App\Http\Controllers\Frontend\PackageController as FrontendPackageController;
 use App\Http\Controllers\Frontend\CustomerController as FrontendCustomerController;
 use App\Http\Controllers\Frontend\ContactusController as FrontendContactusController;
+use App\Models\Review;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,6 +52,7 @@ Route::post('/registration', [FrontendCustomerController::class, 'registrationst
 Route::get('/login', [FrontendCustomerController::class, 'login'])->name('login');
 Route::post('/login', [FrontendCustomerController::class, 'dologin'])->name('customer.do.login');
 
+Route::get('/review', [FrontendReviewController::class, 'show'])->name('review.show');
 
 Route::get('/package', [FrontendPackageController::class, 'package'])->name('user.package');
 Route::get('single-view/{id}', [FrontendPackageController::class, 'singleview'])->name('single.view');
@@ -59,9 +61,11 @@ Route::get('single-view/{id}', [FrontendPackageController::class, 'singleview'])
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/user-profile', [FrontendCustomerController::class, 'profile'])->name('user.profile.view');
     Route::get('/profile/edit/{id}', [FrontendCustomerController::class, 'edit'])->name('profile.edit');
-    Route::put('profile/update/{id}', [FrontendCustomerController::class, 'update'])->name('profile.update');
+    Route::put('profile/update/{id}', [FrontendCustomerController::class, 'update'])->name('profile.update.view');
 
-
+    // Route::post('/submit-review', [FrontendReviewController::class, 'review'])->name('submit.review');
+    // Route::get('/event/{event_id}/reviews', [FrontendReviewController::class, 'rstatus'])->name('event.reviews');
+    
 
     Route::get('/contactus', [FrontendContactusController::class, 'contact'])->name('user.contact');
     Route::post('contact/store',[FrontendContactusController::class,'store'])->name('contact.store');

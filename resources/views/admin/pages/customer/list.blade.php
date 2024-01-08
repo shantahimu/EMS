@@ -12,7 +12,7 @@
         <th scope="col">Name</th>
         <th scope="col">Image</th>
         <th scope="col">E-mail</th>
-        <th scope="col">Action</th>
+        
       </tr>
     </thead>
     <tbody>
@@ -23,11 +23,11 @@
       <td>{{$item->name}}</td>
       <td><img src="{{ url('uploads/', $item->image) }}" id="imgProfile" style="width: 150px; height: 150px" class="img-thumbnail" /></td>
       <td>{{$item->email}}</td>
-      <td>
+      {{-- <td>
         <a herf="" class= "btn btn-success">Edit</a>
         <a herf="" class= "btn btn-primary">View</a>
         <a herf="" class= "btn btn-danger">Delete</a>
-      </td>
+      </td> --}}
     </tr>  
     
     @endforeach

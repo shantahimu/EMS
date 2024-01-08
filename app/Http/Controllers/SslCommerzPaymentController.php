@@ -203,27 +203,31 @@ class SslCommerzPaymentController extends Controller
 
 
     }
-
     public function fail(Request $request)
     {
         $tran_id = $request->input('tran_id');
-
-        $order_details = DB::table('orders')
-            ->where('transaction_id', $tran_id)
-            ->select('transaction_id', 'status', 'currency', 'amount')->first();
-
-        if ($order_details->status == 'Pending') {
-            $update_product = DB::table('orders')
-                ->where('transaction_id', $tran_id)
-                ->update(['status' => 'Failed']);
-            echo "Transaction is Falied";
-        } else if ($order_details->status == 'Processing' || $order_details->status == 'Complete') {
-            echo "Transaction is already Successful";
-        } else {
-            echo "Transaction is Invalid";
+    
+        // Retrieve the order details using Eloquent
+        $order = Booking::where('transaction_id', $tran_id)->first();
+    
+        if ($order && $order->status == 'Pending') {
+            // Update the status to 'Failed' using Eloquent
+            $order->update(['status' => 'Failed']);
+    
+            // Show success message and redirect back
+            notify()->success('Payment Failed');
+            return redirect()->back();
+        } 
+        // Handle cases where the order is not found or status is not 'Pending'
+        // Show error message or handle accordingly
+        // For example:
+        else {
+            // If the order was not found or status was not 'Pending'
+            // Show an error message or handle accordingly
+            return redirect()->back()->withErrors(['message' => 'Order not found or status is not Pending']);
         }
-
     }
+    
 
     public function cancel(Request $request)
     {

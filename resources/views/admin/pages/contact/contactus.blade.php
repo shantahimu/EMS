@@ -11,7 +11,6 @@
       <th scope="col">Email</th>
       <th scope="col">Subject</th>
       <th scope="col">Message</th>
-      <th scope="col">Action</th>
     </tr>
   </thead>
   <tbody>
@@ -24,11 +23,7 @@
       <td>{{$contact->email}}</td>
       <td>{{$contact->subject}}</td>
       <td>{{$contact->message}}</td>
-      <td>
-        <a class="btn btn-success" href="">view</a>
-        <a class="btn btn-warning" href="">Edit</a>
-        <a class="btn btn-danger" href="">Delete</a>
-      </td>
+      
 
     </tr>
     @endforeach
