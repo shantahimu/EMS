@@ -13,6 +13,7 @@ class ServiceController extends Controller
     public function list()
     {
         $services = Service::paginate(5);
+        // dd($services);
         return view('admin.pages.service.list', compact('services'));
     }
 

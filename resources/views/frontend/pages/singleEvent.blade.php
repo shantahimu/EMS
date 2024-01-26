@@ -91,16 +91,15 @@
         function amount() {
             var totalServicePrice = 0;
             var cateringServicePrice = 0;
-    
-            // Calculate total price for selected services (excluding catering)
+  
             var serviceCheckboxes = document.querySelectorAll('input[name="services[]"]:checked');
             serviceCheckboxes.forEach(function (checkbox) {
                 var service_price = parseFloat(checkbox.nextElementSibling.querySelector('.service_price').value);
                 
-                if (service_price !== 500) {
+                if (service_price !== 1000) {
                     totalServicePrice += service_price;
                 } else {
-                    cateringServicePrice = 500; 
+                    cateringServicePrice = 1000; 
                 }
             });
     

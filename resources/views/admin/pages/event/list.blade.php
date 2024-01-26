@@ -19,8 +19,7 @@
     <tbody>
       @foreach($events as $key=> $event)
     <tr>
-      <th scope="row">{{$key+1}}</th>
-     
+      <th scope="row">{{ $key + 1 }}</th>
       <td>{{$event->event_name}}</td>
       <td>{{$event->event_description}}</td>
       <td>{{$event->min_price}}-{{$event->max_price}}.BDT</td>
@@ -40,5 +39,5 @@
       
     </tbody>
   </table>
-  {{$events->links()}}
+ 
 @endsection

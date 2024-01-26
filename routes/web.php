@@ -61,11 +61,7 @@ Route::get('single-view/{id}', [FrontendPackageController::class, 'singleview'])
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/user-profile', [FrontendCustomerController::class, 'profile'])->name('user.profile.view');
     Route::get('/profile/edit/{id}', [FrontendCustomerController::class, 'edit'])->name('profile.edit');
-    Route::put('profile/update/{id}', [FrontendCustomerController::class, 'update'])->name('profile.update.view');
-
-    // Route::post('/submit-review', [FrontendReviewController::class, 'review'])->name('submit.review');
-    // Route::get('/event/{event_id}/reviews', [FrontendReviewController::class, 'rstatus'])->name('event.reviews');
-    
+    Route::put('profile/update/{id}', [FrontendCustomerController::class, 'update'])->name('profile.update.view');  
 
     Route::get('/contactus', [FrontendContactusController::class, 'contact'])->name('user.contact');
     Route::post('contact/store',[FrontendContactusController::class,'store'])->name('contact.store');
@@ -89,9 +85,6 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/logout', [FrontendCustomerController::class, 'logout'])->name('customer.logout');
 });
-
-
-
 
 
 // Backend

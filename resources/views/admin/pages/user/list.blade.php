@@ -2,7 +2,7 @@
 
 @section('content')
 
-<a href="{{route('user.form')}}" type="button" class="btn btn-info bg-info text-dark">Create New User</a>
+
 
 <table class="table table-bordered">
     <thead>

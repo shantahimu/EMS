@@ -18,8 +18,7 @@
     <tbody>
       @foreach($services as $key=> $service)
     <tr>
-      <th scope="row">{{$key+1}}</th>
-      <!-- <th scope="row">{{$service->id}}</th> -->
+      <th scope="row">{{ $key + 1 }}</th>
       <td>{{$service->services }}</td>
       <td>{{$service->service_price}}.BTD</td>
       <td class="col-3">

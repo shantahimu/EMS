@@ -5,7 +5,7 @@
 
 {{-- <a href= "{{route('customer.form')}}"type ="button" class="btn btn-info bg-info text-dark">Add</a> --}}
 
-<table class="table">
+<table class="table table-dark">
     <thead>
       <tr>
         <th scope="col">List</th>

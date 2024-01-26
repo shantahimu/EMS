@@ -11,7 +11,8 @@ use Illuminate\Support\Facades\Validator;
 class EventController extends Controller
 {
     public function list(){
-        $events = Event::paginate(5);
+        $events = Event::orderBy('id', 'ASC')->get();
+        // dd($events);
         return view('admin.pages.event.list', compact('events'));
     }
 

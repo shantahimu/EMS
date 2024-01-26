@@ -16,37 +16,37 @@
                                     <div class="mb-3">
                                         <div class="input-group">
                                             <span class="input-group-text"><i class="fas fa-user fa-fw"></i></span>
-                                            <input type="text" name="name" class="form-control form-control-lg" placeholder="Your Name" aria-label="Your Name">
+                                            <input required type="text" name="name" class="form-control form-control-lg" placeholder="Your Name" aria-label="Your Name">
                                         </div>
                                     </div>
 
                                     <div class="mb-3">
                                         <div class="input-group">
                                             <span class="input-group-text"><i class="fas fa-envelope fa-fw"></i></span>
-                                            <input type="email" name="email" class="form-control form-control-lg" placeholder="Your Email" aria-label="Your Email">
+                                            <input required type="email" name="email" class="form-control form-control-lg" placeholder="Your Email" aria-label="Your Email">
                                         </div>
                                     </div>
 
                                     <div class="mb-3">
                                         <div class="input-group">
                                             <span class="input-group-text"><i class="fas fa-lock fa-fw"></i></span>
-                                            <input type="password" name="password" class="form-control form-control-lg" placeholder="Password" aria-label="Password">
+                                            <input required type="password" name="password" class="form-control form-control-lg" placeholder="Password" aria-label="Password">
                                         </div>
                                     </div>
 
                                     <div class="mb-3">
                                         <div class="input-group">
                                             <span class="input-group-text"><i class="fas fa-key fa-fw"></i></span>
-                                            <input type="password" name="repeat_password" class="form-control form-control-lg" placeholder="Repeat Password" aria-label="Repeat Password">
+                                            <input required type="text" name="address" class="form-control form-control-lg" placeholder="Write down your address" aria-label="Repeat Password">
                                         </div>
                                     </div>
 
-                                    <div class="form-check d-flex justify-content-center mb-4">
+                                    {{-- <div class="form-check d-flex justify-content-center mb-4">
                                         <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3c">
                                         <label class="form-check-label" for="form2Example3c">
                                             I agree all statements in <a href="#!">Terms of service</a>
                                         </label>
-                                    </div>
+                                    </div> --}}
 
                                     <div class="d-flex justify-content-center mb-4">
                                         <button type="submit" class="btn btn-primary btn-lg">Register</button>

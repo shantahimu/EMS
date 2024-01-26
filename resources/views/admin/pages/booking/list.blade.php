@@ -2,8 +2,6 @@
 
 @section('content')
     <div class="mb-3">
-
-
         <button class="btn btn-success" onclick="printContent('printDiv')">Print</button>
     </div>
 
@@ -45,8 +43,12 @@
                         <td>{{ $booking->payment_status }}</td>
                         <td>{{ $booking->transaction_id }}</td>
                         <td class="col-3">
+                            @if ($booking->payment_status == 'VALID')
+                            <a class="btn btn-primary" href="{{ route('booking.details') }}">Details</a>
+                        @else
                             <a class="btn btn-success" href="{{ route('update', $booking->id) }}">Update</a>
                             <a class="btn btn-primary" href="{{ route('booking.details') }}">Details</a>
+                        @endif
                         </td>
                     </tr>
                 @endforeach

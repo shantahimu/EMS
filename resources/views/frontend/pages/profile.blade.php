@@ -49,7 +49,7 @@
                                                 <label style="font-weight:bold;">Full Name</label>
                                             </div>
                                             <div class="col-md-8 col-6">
-                                                {{ auth()->user()->name }}
+                                                {{ auth()->user()->name}}
                                             </div>
 
                                         </div>
@@ -63,7 +63,7 @@
                                                 <label style="font-weight:bold;">Email</label>
                                             </div>
                                             <div class="col-md-8 col-6">
-                                                {{ auth()->user()->email }}
+                                                {{ auth()->user()->email}}
                                             </div>
                                         </div>
                                         <hr />
@@ -72,7 +72,16 @@
                                                 <label style="font-weight:bold;">Role</label>
                                             </div>
                                             <div class="col-md-8 col-6">
-                                                {{ auth()->user()->role }}
+                                                {{ auth()->user()->role}}
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        <div class="row">
+                                            <div class="col-sm-3 col-md-2 col-5">
+                                                <label style="font-weight:bold;">Address</label>
+                                            </div>
+                                            <div class="col-md-8 col-6">
+                                                {{ auth()->user()->address}}
                                             </div>
                                         </div>
                                     </div>
@@ -106,10 +115,10 @@
                 @foreach ($booking as $key => $singleBooking)
                     <tr>
                         <th scope="row">{{ $key + 1 }}</th>
-                        <td>{{ $singleBooking->created_at }}</td>
+                        <td>{{ $singleBooking->created_at}}</td>
                         <td>{{ $singleBooking->event->event_name }}</td>
-                        <td>{{ $singleBooking->price }}</td>
-                        <td>{{ $singleBooking->status }}</td>
+                        <td>{{ $singleBooking->price}}</td>
+                        <td>{{ $singleBooking->status}}</td>
                         <td>
                             @if ($singleBooking->status == 'processing')
                                 <a href="{{ route('Booking_Confirm', $singleBooking->id) }}" type="button" class="btn btn-success">Confirm</a>

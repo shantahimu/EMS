@@ -43,6 +43,7 @@ class CustomerController extends Controller
             'name'=>$request->name,
             'email'=>$request->email,
             'image' => $fileName,
+            'address'=>$request->address
         
 
         ]);
@@ -58,6 +59,7 @@ class CustomerController extends Controller
             'name' => 'required',
             'email' => 'required|email',
             'password' => 'required|min:6',
+            'address'=>'required'
         ]); 
 
         if($validate->fails()){
@@ -82,6 +84,7 @@ class CustomerController extends Controller
             'role' => 'customer',
             'password' => bcrypt($request->password),
             'image' => $fileName,
+            'address'=>$request->address,
         ]);
 
         notify()->success('Customer Registration successful. Please login.');
